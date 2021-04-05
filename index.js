@@ -1,9 +1,12 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
 // MIDDLEWARES
 app.use(express.json());
 
+// TODO
+
+console.log("Trying prettier config");
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
