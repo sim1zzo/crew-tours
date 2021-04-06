@@ -4,7 +4,12 @@ const path = `${__dirname}/../development-data/tours-example.json`
 const tours = JSON.parse(fs.readFileSync(path, 'utf8'));
 
 exports.isValidTour = (req, res, next) => {
-  if ((!req.body.name || !req.body.price) || (req.body.name.length < 3 || parseInt(req.body.price) < 1)) return res.status(404).json({ status: "Error", message: 'Invalid tour' });
+  if ((!req.body.name || !req.body.price) || (req.body.name.length < 3 || parseInt(req.body.price) < 1)){
+    return res.status(400).json({
+      status: "Error",
+      message: 'Invalid tour name or tour price'
+    });
+  }
   next();
 }
 
