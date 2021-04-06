@@ -1,7 +1,7 @@
-const { notDeepStrictEqual } = require("assert");
 const fs = require("fs");
 const path = `${__dirname}/../development-data/tours-example.json`
 const tours = JSON.parse(fs.readFileSync(path, 'utf8'));
+const { Tour, validate } = require('../models/tour');
 
 exports.isValidTour = (req, res, next) => {
   if ((!req.body.name || !req.body.price) || (req.body.name.length < 3 || parseInt(req.body.price) < 1)){
@@ -13,7 +13,8 @@ exports.isValidTour = (req, res, next) => {
   next();
 }
 
-exports.getAllTours = (req, res) => {
+exports.getAllTours = async (req, res) => {
+  const tours = await Tour.find().sort('name');
   if (!tours) return res.json({ message: 'error here' })
   res.json({
     status: 'OK',
@@ -23,8 +24,8 @@ exports.getAllTours = (req, res) => {
   })
 }
 
-exports.getOneTour = (req, res) => {
-  const tour = tours.find(x => x.id === parseInt(req.params.id));
+exports.getOneTour = async (req, res) => {
+  const tour = await Tour.findById(req.params.id);
   if (!tour)
     return res
       .status(404)
@@ -42,21 +43,42 @@ exports.getOneTour = (req, res) => {
   })
 }
 
-exports.createTour = (req, res) => {
-  const id = tours[tours.length - 1].id + 1;
-  const anotherTour = { id: id, ...req.body };
-  tours.push(anotherTour);
-  res.status(200).json({ status: 'OK', data: { tour: anotherTour}});
-}
+exports.createTour = async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).json({ status: 'Failed', messagge: error.details[0].message });
 
-exports.deleteTour = (req, res) => {
-  const tour = tours.find(x => x.id === req.params.id * 1);
+  const tour = new Tour({
+    name: req.body.name,
+    price: req.body.price,
+    rating: req.body.rating
+  });
+
+  await tour.save();
+  res.status(200).json({ status: 'OK', data: { tour } });
+};
+
+exports.updateTour = async (req, res) => {
+  const { error } = validate(req.body);
+  if (error) return res.status(400).json({ status: 'Failed', messagge: error.details[0].message });
+  
+  const tour = await Tour.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    price: req.body.price,
+    rating: req.body.rating
+  }, { new: true });
+  
+  res.status(200).json({
+    status: 'Updated', data: {
+    tour
+  }});
+
+};
+
+exports.deleteTour = async (req, res) => {
+  const tour = await Tours.findByIdAndDelete(req.params.id);
   if (!tours)
     return res.status(404).json({ status: 'Failed', message: 'Invalid ID' });
-  
-  const index = tours.indexOf(tour);
-  tours.splice(index, 1);
 
   return res.status(200).json({ status: 'Deleted', deleted_tour: tour });
-}
+};
 
