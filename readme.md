@@ -1,7 +1,7 @@
 ## Introduction
 
 This project is a final project for the Open University. 
-The web-application 
+The web-application is for managing crew-member private tours.
 
 This is the implementation of Crew-tours in Node.js.
 
