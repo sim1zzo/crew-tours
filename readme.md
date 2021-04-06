@@ -26,7 +26,7 @@ Next, from the project folder, install the dependencies:
 
 ### Start the Server
 
-    node index.js
+    npm start
 
 This will launch the Node server on port 3000. If that port is busy, you can set a different point in config.env file.
 
