@@ -28,10 +28,10 @@ Next, from the project folder, install the dependencies:
 
     node index.js
 
-This will launch the Node server on port 8000. If that port is busy, you can set a different point in config.env file.
+This will launch the Node server on port 3000. If that port is busy, you can set a different point in config.env file.
 
 Open up your browser and head over to:
 
-http://localhost:8000/api/tours
+http://localhost:3000/api/tours
 
 You should see the list of tours. That confirms that you have set up everything successfully.
