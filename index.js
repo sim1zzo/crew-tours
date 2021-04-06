@@ -1,3 +1,4 @@
+const morgan = require('morgan');
 const express = require("express");
 const app = express();
 const fs = require("fs");
@@ -5,6 +6,7 @@ const fs = require("fs");
 
 // MIDDLEWARES
 app.use(express.json());
+app.use(morgan('dev'));
 
 // mongoose.connect('mongodb://localhost/crew-tours', {
 //   useUnifiedTopology: true,
