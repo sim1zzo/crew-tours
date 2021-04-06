@@ -2,9 +2,10 @@
   "name": "crewtour_ou_tm470",
   "version": "1.0.0",
   "description": "A web app for managing crew tours",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start:dev": "nodemon server.js",
+    "start:production": "NODE_ENV=production nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
