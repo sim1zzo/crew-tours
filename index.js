@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
+
+
 // MIDDLEWARES
 app.use(express.json());
 app.use(express.static('./public'));
