@@ -17,6 +17,10 @@ const tourSchema = new mongoose.Schema({
   rating: {
     type: Number,
     default: 4.5
+  },
+  duration: {
+    type: Number,
+    required: [true, 'Every tour has to have a duration']
   }
 });
 
@@ -26,7 +30,8 @@ function validateTour(tour) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(255).required(),
     price: Joi.number().required(),
-    rating: Joi.number()
+    rating: Joi.number(),
+    duration: Joi.number().required()
   });
   return schema.validate(tour);
 }
