@@ -12,7 +12,7 @@ router
 router
 .route('/:id')
   .get(getOneTour)
-  .patch(updateTour)
-  .delete(deleteTour);
+  .patch(isValidTour, updateTour)
+  .delete(deleteTour); 
 
 module.exports = router;

@@ -24,11 +24,11 @@ const Tour = mongoose.model('Tour', tourSchema);
 
 function validateTour(tour) {
   const schema = Joi.object({
-    name: Joi.string().min(5).max(255).unique().required(),
+    name: Joi.string().min(5).max(255).required(),
     price: Joi.number().required(),
     rating: Joi.number()
   });
-  return schema.validate(user);
+  return schema.validate(tour);
 }
 
 exports.Tour = Tour;
