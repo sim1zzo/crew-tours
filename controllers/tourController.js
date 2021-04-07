@@ -46,14 +46,14 @@ exports.getOneTour = async (req, res) => {
 
 exports.createTour = async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).json({ status: 'Failed', messagge: error.details[0].message });
+  if (error) return res.status(404).json({ status: 'Failed', messagge: error.details[0].message });
 
     try {
     const tour = await Tour.create(req.body);
-    return res.status(200).json({ status: 'OK', data: { tour } });
+    return res.status(201).json({ status: 'OK', data: { tour } });
   } catch (error) {
       return res
-        .status(400)
+        .status(404)
         .json({
           status: 'Error',
           message: error.message
@@ -68,14 +68,14 @@ exports.createTour = async (req, res) => {
       
       try {
         const tour = await Tour
-          .findByIdAndUpdate(req.params.id, req.body, { new: true });
+          .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators:true });
           return res.status(200).json({
             status: 'Updated', data: {
             tour
           }});
         
       } catch (error) {
-        return res.status(400).json({ status: 'Error', message: error.message });
+        return res.status(404).json({ status: 'Error', message: error.message });
       }
 };
 
@@ -86,6 +86,5 @@ exports.deleteTour = async (req, res) => {
   } catch (error) {
       return res.status(404).json({ status: 'Failed', message: 'Invalid ID' });
   }
-
 };
 
