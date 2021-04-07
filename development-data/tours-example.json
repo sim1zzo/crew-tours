@@ -32,7 +32,7 @@
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
-    "tourDate": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"],
+    "tourDates": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"],
     "maxNumberOfParticipant": 15
   },
   {
@@ -43,7 +43,7 @@
     "tourReview": 3,
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
-    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "pictures": ["image1.jpg", "image2.jpg"],
     "maxNumberOfParticipant": 15
   },
@@ -56,7 +56,7 @@
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
-    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "maxNumberOfParticipant": 15
   },
   {
@@ -68,7 +68,7 @@
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
-    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "maxNumberOfParticipant": 15
   },
   {
@@ -80,7 +80,7 @@
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
-    "tourDate": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
+    "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
     "maxNumberOfParticipant": 15
   }
 ]
