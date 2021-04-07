@@ -1,92 +1,86 @@
 [
   {
-    "id": 0,
     "name": "This is tour 1",
-    "tourlength": 2,
-    "numberOfParticipants": 15,
     "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
     "coverPicture": "tour-1-cover.jpg",
-    "startDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"]
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 1,
     "name": "This is tour 2",
-    "tourlength": 4,
-    "numberOfParticipants": 15,
-    "price": 150,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-2-cover.jpg",
-    "startDate": ["2022-01-15,11:00", "2022-02-15,11:00", "2022-03-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDates": ["2022-01-15,11:00", "2022-02-15,11:00", "2022-03-15,11:00"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 2,
     "name": "This is tour 3",
-    "tourlength": 5,
-    "numberOfParticipants": 15,
-    "price": 170,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-3-cover.jpg",
-    "startDate": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDate": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 3,
     "name": "This is tour 4",
-    "tourlength": 7,
-    "numberOfParticipants": 15,
-    "price": 300,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-4-cover.jpg",
-    "startDate": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 4,
     "name": "This is tour 5",
-    "tourlength": 9,
-    "numberOfParticipants": 15,
-    "price": 350,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-5-cover.jpg",
-    "startDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 5,
     "name": "This is tour 6",
-    "tourlength": 11,
-    "numberOfParticipants": 15,
-    "price": 400,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-6-cover.jpg",
-    "startDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
+    "maxNumberOfParticipant": 15
   },
   {
-    "id": 6,
     "name": "This is tour 7",
-    "tourlength": 12,
-    "numberOfParticipants": 15,
-    "price": 500,
+    "price": 100,
+    "tourRating": 4.6,
+    "duration": 2,
+    "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-7-cover.jpg",
-    "startDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"]
-  },
-  {
-    "id": 7,
-    "name": "This is tour 8",
-    "tourlength": 14,
-    "numberOfParticipants": 15,
-    "price": 600,
-    "description": "Description for the tour",
-    "coverPicture": "tour-8-cover.jpg",
-    "startDate": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"]
-  },
-  {
-    "id": 8,
-    "name": "This is tour x",
-    "tourlength": 141,
-    "numberOfParticipants": 151,
-    "price": 6001,
-    "description": "Description for the test tour",
-    "coverPicture": "tour-x-cover.jpg",
-    "startDate": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"]
+    "coverPicture": "tour-1-cover.jpg",
+    "pictures": ["image1.jpg", "image2.jpg"],
+    "tourDate": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
+    "maxNumberOfParticipant": 15
   }
 ]
