@@ -12,9 +12,13 @@ exports.isValidTour = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find(req.query).sort('name');
+    const queryObj = { ...req.query };
+    let queryString = JSON.stringify(queryObj);
+    queryString = queryString.replace(/\b(gt|gte|lt|lte|eq|ne)\b/g, match => `$${match}`);
+
+    const tours = await Tour.find(JSON.parse(queryString));
     return res.json({
-      status: 'OK',
+      status: 'Success',
       numbersOfTour: tours.length,
       data: {
         tours
@@ -22,7 +26,7 @@ exports.getAllTours = async (req, res) => {
     });
   } catch (error) {
     
-    return res.json({ status: 'ERROR', error });
+    return res.json({ status: 'ERROR', message:error.message });
   }
 }
 
