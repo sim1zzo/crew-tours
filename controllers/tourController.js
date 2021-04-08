@@ -12,9 +12,10 @@ exports.isValidTour = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find().sort('name');
+    const tours = await Tour.find(req.query).sort('name');
     return res.json({
       status: 'OK',
+      numbersOfTour: tours.length,
       data: {
         tours
       }
@@ -63,8 +64,8 @@ exports.createTour = async (req, res) => {
     };
     
     exports.updateTour = async (req, res) => {
-      const { error } = validate(req.body);
-      if (error) return res.status(400).json({ status: 'Failed', messagge: error.details[0].message });
+      // const { error } = validate(req.body);
+      // if (error) return res.status(400).json({ status: 'Failed', messagge: error.details[0].message });
       
       try {
         const tour = await Tour
