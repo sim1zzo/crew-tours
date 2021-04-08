@@ -16,14 +16,16 @@ exports.getAllTours = async (req, res) => {
     let queryString = JSON.stringify(queryObj);
     queryString = queryString.replace(/\b(gt|gte|lt|lte|eq|ne)\b/g, match => `$${match}`);
 
-    const tours = await Tour.find(JSON.parse(queryString));
+    const tours = await Tour.find(JSON.parse(queryString))
+      .sort('name -price ')
+      .select('-__v');
     return res.json({
       status: 'Success',
       numbersOfTour: tours.length,
       data: {
-        tours
-      }
-    });
+          tours
+        }
+      });
   } catch (error) {
     
     return res.json({ status: 'ERROR', message:error.message });
@@ -90,6 +92,8 @@ exports.deleteTour = async (req, res) => {
     return res.status(200).json({ status: 'Deleted', tour });
   } catch (error) {
       return res.status(404).json({ status: 'Failed', message: 'Invalid ID' });
-  }
-};
+    }
+  };
+  
+  
 

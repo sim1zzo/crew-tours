@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.param('/', isValidTour);
 
+
+
 router
   .route('/')
   .get(getAllTours)
