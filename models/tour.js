@@ -8,7 +8,7 @@ const tourSchema = new mongoose.Schema({
     trim: true,
     minlength: 5,
     maxlength: 255,
-    unique: true
+    unique: true  
   },
   price: {
     type: Number,
@@ -16,7 +16,9 @@ const tourSchema = new mongoose.Schema({
   },
   tourRating: {
     type: Number,
-    default: 4.5
+    default: 4.5,
+    min: 1,
+    max:5
   },
   duration: {
     type: Number,
@@ -36,7 +38,8 @@ const tourSchema = new mongoose.Schema({
   },
   pictures: [String],
   maxNumberOfParticipant: Number,
-  tourDates :[Date]
+  tourDates: [Date]
+  
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
