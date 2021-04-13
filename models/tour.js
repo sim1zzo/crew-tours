@@ -8,38 +8,39 @@ const tourSchema = new mongoose.Schema({
     trim: true,
     minlength: 5,
     maxlength: 255,
-    unique: true  
+    unique: true,
   },
   price: {
     type: Number,
-    required: [true, 'Every tour has to have a price']
+    required: [true, 'Every tour has to have a price'],
+    get: (t) => Math.round(t),
+    set: (t) => Math.round(t),
   },
   tourRating: {
     type: Number,
     default: 4.5,
     min: 1,
-    max:5
+    max: 5,
   },
   duration: {
     type: Number,
-    required: [true, 'Every tour has to have a duration']
+    required: [true, 'Every tour has to have a duration'],
   },
   tourReview: {
     type: Number,
-    default:0
+    default: 0,
   },
   description: {
     type: String,
-    trim: true
+    trim: true,
   },
   coverPicture: {
     type: String,
-    required: [true, "Tour has to have a picture"]
+    required: [true, 'Tour has to have a picture'],
   },
   pictures: [String],
   maxNumberOfParticipant: Number,
-  tourDates: [Date]
-  
+  tourDates: [Date],
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
@@ -55,11 +56,10 @@ function validateTour(tour) {
     coverPicture: Joi.string().required(),
     pictures: Joi.array().required(),
     tourDates: Joi.array().items(Joi.date()),
-    maxNumberOfParticipant: Joi.number()
+    maxNumberOfParticipant: Joi.number(),
   });
   return schema.validate(tour);
 }
 
 exports.Tour = Tour;
 exports.validate = validateTour;
-
