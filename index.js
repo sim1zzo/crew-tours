@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
-const errorHandlerMiddle = require('./middlewares/errorMiddleware');
+// const errorHandlerMiddle = require('./middlewares/errorMiddleware');
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 app.use('/api/tours', toursRouter);
-// app.use('/api/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 app.all('*', (req, res, next) => {
   res.status(404).json({
@@ -28,6 +28,6 @@ app.all('*', (req, res, next) => {
   next();
 });
 // Error handling middleware
-app.use(errorHandlerMiddle);
+// app.use(errorHandlerMiddle);
 
 module.exports = app;

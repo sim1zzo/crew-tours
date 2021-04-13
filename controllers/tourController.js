@@ -1,15 +1,15 @@
 require('express-async-errors');
 const { Tour, validate } = require('../models/tour');
 
-exports.isValidTour = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
-    return res.status(400).json({
-      status: 'Error',
-      message: 'Invalid tour name or tour price',
-    });
-  }
-  next();
-};
+// exports.isValidTour = (req, res, next) => {
+//   if (!req.body.name || !req.body.price) {
+//     return res.status(400).json({
+//       status: 'Error',
+//       message: 'Invalid tour name or tour price',
+//     });
+//   }
+//   next();
+// };
 
 exports.getAllTours = async (req, res) => {
   try {
@@ -35,7 +35,7 @@ exports.getAllTours = async (req, res) => {
   }
 };
 
-exports.getOneTour = async (req, res, next) => {
+exports.getOneTour = async (req, res) => {
   const tour = await Tour.findById(req.params.id);
   if (!tour)
     return res.status(404).json({
