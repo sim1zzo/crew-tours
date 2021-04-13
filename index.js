@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const ErrorHandling = require('./utils/errorHandling');
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
 const errorHandlerMiddle = require('./middlewares/errorMiddleware');
@@ -21,12 +20,12 @@ app.use('/api/tours', toursRouter);
 // app.use('/api/users', usersRouter);
 
 app.all('*', (req, res, next) => {
-  next(
-    new ErrorHandling(
-      `Unable to connect to the given URL: ${req.originalUrl}`,
-      404
-    )
-  );
+  res.status(404).json({
+    status: '404 Not Found',
+    message: `Invalid url: ${req.originalUrl}`,
+  });
+
+  next();
 });
 // Error handling middleware
 app.use(errorHandlerMiddle);
