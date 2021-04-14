@@ -4,9 +4,7 @@ const { User, validate } = require('../models/user');
 exports.getAllUsers =
   ('/',
   async (req, res) => {
-    const users = await User.find()
-      .sort('name -price ')
-      .select('-__v -password');
+    const users = await User.find().sort('name -price ').select('-__v');
     if (!users)
       return res.json({
         status: 404,
@@ -37,7 +35,7 @@ exports.createUser =
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
-    res.status(200).json({
+    res.status(201).json({
       status: 'Ok',
       data: {
         user: {

@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema({
     type: 'String',
     required: [true, 'Every tour has to have an email'],
     trim: true,
+    lowercase: true,
     minlength: 5,
     maxlength: 255,
     unique: true,
