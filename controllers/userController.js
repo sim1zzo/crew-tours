@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { User, validate } = require('../models/user');
 
@@ -34,8 +35,11 @@ exports.createUser =
     user = await User.create(req.body);
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+
+    const token = user.generateAuthToken();
     await user.save();
-    res.status(201).json({
+
+    res.header('x-auth-token', token).json({
       status: 'Ok',
       data: {
         user: {

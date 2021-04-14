@@ -26,7 +26,5 @@ app.all('*', (req, res, next) => {
 
   next();
 });
-// Error handling middleware
-// app.use(errorHandlerMiddle);
 
 module.exports = app;
