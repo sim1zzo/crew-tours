@@ -1,4 +1,5 @@
 const auth = require('../middlewares/auth');
+const admin = require('../middlewares/admin');
 const express = require('express');
 const {
   getOneTour,
@@ -17,6 +18,6 @@ router
   .route('/:id')
   .get(getOneTour)
   .patch(auth, updateTour)
-  .delete(auth, deleteTour);
+  .delete([auth, admin], deleteTour);
 
 module.exports = router;
