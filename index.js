@@ -1,3 +1,4 @@
+const error = require('./middlewares/errorMiddleware');
 const express = require('express');
 const morgan = require('morgan');
 const toursRouter = require('./routes/toursRoutes');
@@ -17,13 +18,13 @@ app.use(express.static('./public'));
 
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
+app.use(error);
 
 app.all('*', (req, res, next) => {
   res.status(404).json({
     status: '404 Not Found',
     message: `Invalid url: ${req.originalUrl}`,
   });
-
   next();
 });
 

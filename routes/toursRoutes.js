@@ -1,3 +1,4 @@
+const asyncCatch = require('../middlewares/asyncCatch');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
 const express = require('express');
@@ -12,12 +13,15 @@ const router = express.Router();
 
 // router.param('/', isValidTour);
 
-router.route('/').get(getAllTours).post(auth, createTour);
+router
+  .route('/')
+  .get(asyncCatch(getAllTours))
+  .post(auth, asyncCatch(createTour));
 
 router
   .route('/:id')
-  .get(getOneTour)
-  .patch(auth, updateTour)
-  .delete([auth, admin], deleteTour);
+  .get(asyncCatch(getOneTour))
+  .patch(auth, asyncCatch(updateTour))
+  .delete([auth, admin], asyncCatch(deleteTour));
 
 module.exports = router;

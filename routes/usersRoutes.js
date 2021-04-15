@@ -1,3 +1,4 @@
+const asyncCatch = require('../middlewares/asyncCatch');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
 const express = require('express');
@@ -12,15 +13,15 @@ const {
 const { userSignUp, logIn, getMe } = require('../controllers/authController');
 const router = express.Router();
 
-router.post('/signUp', userSignUp);
-router.post('/login', logIn);
-router.get('/me', auth, getMe);
+router.post('/signUp', asyncCatch(userSignUp));
+router.post('/login', asyncCatch(logIn));
+router.get('/me', auth, asyncCatch(getMe));
 
-router.route('/').get(getAllUsers).post(createUser);
+router.route('/').get(asyncCatch(getAllUsers)).post(asyncCatch(createUser));
 router
   .route('/:id')
-  .get(getUser)
-  .put(auth, updateUser)
-  .delete([auth, admin], deleteUser);
+  .get(asyncCatch(getUser))
+  .put(auth, asyncCatch(updateUser))
+  .delete([auth, admin], asyncCatch(deleteUser));
 
 module.exports = router;
