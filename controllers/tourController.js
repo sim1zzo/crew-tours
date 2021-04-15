@@ -19,7 +19,7 @@ exports.getAllTours = async (req, res) => {
   });
 };
 
-exports.getOneTour = async (req, res, next) => {
+exports.getOneTour = async (req, res) => {
   const tour = await Tour.findById(req.params.id);
   if (!tour)
     return res.status(404).json({
