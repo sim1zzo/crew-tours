@@ -1,3 +1,4 @@
+const auth = require('../middlewares/auth');
 const express = require('express');
 const {
   getAllUsers,
@@ -14,6 +15,10 @@ router.post('/signUp', userSignUp);
 router.post('/login', logIn);
 
 router.route('/').get(getAllUsers).post(createUser);
-router.route('/:id').get(getUser).put(updateUser).delete(deleteUser);
+router
+  .route('/:id')
+  .get(getUser)
+  .put(auth, updateUser)
+  .delete(auth, deleteUser);
 
 module.exports = router;

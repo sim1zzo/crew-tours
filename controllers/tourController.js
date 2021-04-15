@@ -1,4 +1,3 @@
-require('express-async-errors');
 const { Tour, validate } = require('../models/tour');
 
 // exports.isValidTour = (req, res, next) => {

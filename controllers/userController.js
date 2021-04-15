@@ -30,6 +30,7 @@ exports.createUser =
         .json({ status: 'Failed', messagge: error.details[0].message });
 
     let user = await User.findOne({ email: req.body.email });
+    // console.log(req.body.email);
     if (user) return res.status(400).send('User already registered');
 
     user = await User.create(req.body);
@@ -43,15 +44,17 @@ exports.createUser =
       status: 'Ok',
       data: {
         user: {
+          _id: user._id,
           name: user.name,
           email: user.email,
+          token,
         },
       },
     });
   });
 
 exports.getUser = async (req, res) => {
-  let user = await User.findById(req.params.id).select('-__v');
+  let user = await User.findById(req.params.id).select('-__v -password');
   if (!user)
     return res.status(404).json({ status: 'Error', message: error.message });
   try {
