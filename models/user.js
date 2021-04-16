@@ -26,12 +26,16 @@ const userSchema = new mongoose.Schema({
     maxlength: 1024,
   },
   avatar: 'String',
-  isAdmin: Boolean,
+  role: {
+    type: String,
+    enum: ['user', 'guide', 'admin'],
+    default: 'user',
+  },
 });
 
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
-    { _id: this._id, isAdmin: this.isAdmin },
+    { _id: this._id, role: this.role },
     process.env.jwtPrivateKey
   );
   return token;

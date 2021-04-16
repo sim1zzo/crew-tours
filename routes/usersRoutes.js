@@ -20,7 +20,7 @@ router.get('/me', auth, asyncCatch(getMe));
 router.route('/').get(asyncCatch(getAllUsers)).post(asyncCatch(createUser));
 router
   .route('/:id')
-  .get(asyncCatch(getUser))
+  .get([auth, admin], asyncCatch(getUser)) // this will prevent a random user to insert an id and receive information that are not supposed to be showned.
   .put(auth, asyncCatch(updateUser))
   .delete([auth, admin], asyncCatch(deleteUser));
 

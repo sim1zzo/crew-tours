@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const app = require('./index');
 
+require('./startup/log');
 // connecting to the database
 require('./startup/db')();
 
