@@ -10,12 +10,20 @@ const {
   updateUser,
 } = require('../controllers/userController');
 
-const { userSignUp, logIn, getMe } = require('../controllers/authController');
+const {
+  userSignUp,
+  logIn,
+  getMe,
+  resetPassword,
+  forgottenPassword,
+} = require('../controllers/authController');
 const router = express.Router();
 
+router.get('/me', auth, asyncCatch(getMe));
 router.post('/signUp', asyncCatch(userSignUp));
 router.post('/login', asyncCatch(logIn));
-router.get('/me', auth, asyncCatch(getMe));
+router.patch('/forgottenPassword', asyncCatch(forgottenPassword));
+router.put('/resetPassword', auth, asyncCatch(resetPassword));
 
 router.route('/').get(asyncCatch(getAllUsers)).post(asyncCatch(createUser));
 router

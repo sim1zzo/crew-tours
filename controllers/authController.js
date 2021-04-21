@@ -1,9 +1,8 @@
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const express = require('express');
 const { User, validate } = require('../models/user');
-const dotenv = require('dotenv');
+const sendEmail = require('../utils/email');
 
 exports.userSignUp = async (req, res) => {
   const { error } = validate(req.body);
@@ -21,6 +20,7 @@ exports.userSignUp = async (req, res) => {
     password: req.body.password,
     role: req.body.role,
   });
+
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
 
@@ -31,6 +31,7 @@ exports.userSignUp = async (req, res) => {
     status: 'Ok',
     data: {
       user: {
+        id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
@@ -62,8 +63,54 @@ function isValid(req) {
   });
   return schema.validate(req);
 }
+function isValidPassword(passw) {
+  const schema = Joi.object({
+    password: Joi.string().min(5).max(255).required(),
+  });
+  return schema.validate(passw);
+}
 
 exports.getMe = async (req, res) => {
   const user = await User.findById(req.user._id).select('-password -__v');
   res.send(user);
+};
+
+exports.forgottenPassword = async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send('Invalid email or password');
+
+  // generate a new token
+  const token = user.generateAuthToken();
+  const url = `${req.protocol}://${req.get(
+    'host'
+  )}/api/users/resetPassword/${token}`;
+
+  const message = `Have you forgot your password? Send a new request with your new password to ${url}`;
+  await sendEmail({
+    email: req.body.email,
+    subject: 'Reset password',
+    message,
+  });
+  res.status(200).send('Email send!');
+};
+
+exports.resetPassword = async (req, res) => {
+  let user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(404).send('No user with such email address');
+
+  const salt = await bcrypt.genSalt(10);
+  const password = await bcrypt.hash(req.body.password, salt);
+  const valid = isValidPassword(password);
+  if (!valid) return res.status(400).send('Invalid password');
+
+  user.password = password;
+  await user.save();
+  res.status(200).json({
+    status: 'OK',
+    data: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+    },
+  });
 };

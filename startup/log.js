@@ -1,14 +1,6 @@
 const winston = require('winston');
 
 module.exports = function () {
-  winston.handleException(
-    new winston.transports.File({ filename: 'uncaughtException.log' })
-  );
-
-  process.on('unhandledRejection', (ex) => {
-    throw ex;
-  });
-
   // => logger.js
   const logger = winston.createLogger({
     level: 'info',
