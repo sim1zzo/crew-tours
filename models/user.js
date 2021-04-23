@@ -25,6 +25,12 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
+  password2: {
+    type: 'String',
+    required: [true, 'Every user must have a password confirmation'],
+    minlength: 5,
+    maxlength: 1024,
+  },
   avatar: 'String',
   role: {
     type: String,
@@ -48,6 +54,7 @@ function validateUser(user) {
     name: Joi.string().required().min(5).max(50),
     email: Joi.string().required().min(5).max(255).email(),
     password: Joi.string().required().min(5).max(255),
+    password2: Joi.string().required().min(5).max(255),
   });
 
   return schema.validate(user);

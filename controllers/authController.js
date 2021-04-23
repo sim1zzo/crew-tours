@@ -18,11 +18,16 @@ exports.userSignUp = async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    password2: req.body.password2,
     role: req.body.role,
   });
 
+  if (user.password !== user.password2)
+    return res.status(403).send('Passoword must match');
+
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
+  user.password2 = await bcrypt.hash(user.password2, 10);
 
   const token = user.generateAuthToken();
   await user.save();
@@ -71,7 +76,9 @@ function isValidPassword(passw) {
 }
 
 exports.getMe = async (req, res) => {
-  const user = await User.findById(req.user._id).select('-password -__v');
+  const user = await User.findById(req.user._id).select(
+    '-password -password2 -__v'
+  );
   res.send(user);
 };
 
@@ -113,4 +120,27 @@ exports.resetPassword = async (req, res) => {
       email: user.email,
     },
   });
+};
+
+exports.changeRole = async (req, res) => {
+  let user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(404).send('No user found');
+
+  if (!req.body.role)
+    return res
+      .status(404)
+      .send('To assign a new role for a user a role has to be specified');
+  user.role = req.body.role;
+  await user.save();
+  res
+    .status(200)
+    .json({
+      status: 'OK',
+      data: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
 };
