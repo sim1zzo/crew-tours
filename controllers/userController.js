@@ -20,7 +20,7 @@ exports.getAllUsers = async (req, res) => {
 };
 
 exports.getUser = async (req, res) => {
-  let user = await User.findById(req.params.id).select('-__v -password');
+  let user = await User.findById(req.params.id).select('-__v');
   if (!user)
     return res.status(404).json({ status: 'Error', message: error.message });
 
@@ -36,18 +36,26 @@ exports.deleteUser = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const { error } = validate(req.body);
-  if (error)
+  const user = await User.findById(req.params.id);
+  if (!user) return res.status(404).send('No user found');
+
+  const uneededFields = ['password', 'role'];
+
+  if (uneededFields.some((x) => x in req.body))
     return res
       .status(400)
-      .json({ status: 'Failed', messagge: error.details[0].message });
+      .send(
+        'Cannot update password or role. Please use a proper path! api/users/resetPassword or api/users/changeRole'
+      );
 
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
+  if (req.body.name) {
+    user.name = req.body.name;
+  }
+
+  if (req.body.email) {
+    user.email = req.body.email;
+  }
+
   await user.save();
 
   return res.status(200).json({

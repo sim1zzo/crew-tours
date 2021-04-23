@@ -54,6 +54,7 @@ exports.logIn = async (req, res) => {
   if (!user) return res.status(400).send('Invalid password or email');
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
+  console.log(validPassword);
   if (!validPassword) res.status(400).send('Invalid email or password');
 
   //  Information Exper Principle all the information about token are handled by user
@@ -118,6 +119,7 @@ exports.resetPassword = async (req, res) => {
       id: user._id,
       name: user.name,
       email: user.email,
+      role: user.role,
     },
   });
 };
@@ -132,15 +134,13 @@ exports.changeRole = async (req, res) => {
       .send('To assign a new role for a user a role has to be specified');
   user.role = req.body.role;
   await user.save();
-  res
-    .status(200)
-    .json({
-      status: 'OK',
-      data: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
-    });
+  res.status(200).json({
+    status: 'OK',
+    data: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    },
+  });
 };
