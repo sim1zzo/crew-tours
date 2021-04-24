@@ -3,6 +3,7 @@ const app = require('./index');
 
 process.on('uncaughtException', (ex) => {
   console.log('Something went wrong ❌ ', ex.name, ex.message);
+  return;
 });
 
 require('./startup/log');
@@ -15,4 +16,5 @@ app.listen(port, () => {
 
 process.on('unhandledRejection', (ex) => {
   console.log('unhandledRejection ❌', ex.name, ex.message);
+  return;
 });

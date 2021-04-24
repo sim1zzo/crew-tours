@@ -93,15 +93,22 @@ exports.forgottenPassword = async (req, res) => {
   )}/api/users/resetPassword/${token}`;
 
   const message = `Have you forgot your password? Send a new request with your new password to ${url}`;
-  await sendEmail({
-    email: req.body.email,
-    subject: 'Reset password',
-    message,
-  });
-  res.status(200).send('Email send!');
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: 'Reset password link',
+      message,
+    });
+    res
+      .status(200)
+      .json({ status: 'OK', message: `Email has been sent to ${user.email}` });
+  } catch (error) {
+    console.log(error);
+    await user.save();
+  }
 };
 
-exports.resetPassword = async (req, res) => {
+exports.changePassword = async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(404).send('No user with such email address');
 
@@ -122,6 +129,8 @@ exports.resetPassword = async (req, res) => {
     },
   });
 };
+
+exports.resetPassword = async (req, res) => {};
 
 exports.changeRole = async (req, res) => {
   let user = await User.findOne({ email: req.body.email });

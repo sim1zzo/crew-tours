@@ -21,7 +21,7 @@ router
 router
   .route('/:id')
   .get(asyncCatch(getOneTour))
-  .patch(auth, asyncCatch(updateTour))
+  .patch([auth, admin], asyncCatch(updateTour))
   .delete([auth, admin], asyncCatch(deleteTour));
 
 module.exports = router;

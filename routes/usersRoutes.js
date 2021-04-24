@@ -17,14 +17,16 @@ const {
   resetPassword,
   forgottenPassword,
   changeRole,
+  changePassword,
 } = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/me', auth, asyncCatch(getMe));
 router.post('/signUp', asyncCatch(userSignUp));
 router.post('/login', asyncCatch(logIn));
-router.patch('/forgottenPassword', asyncCatch(forgottenPassword));
-router.put('/resetPassword', auth, asyncCatch(resetPassword));
+router.patch('/changePassword', auth, asyncCatch(changePassword));
+router.post('/forgottenPassword', asyncCatch(forgottenPassword));
+router.patch('/resetPassword/token', asyncCatch(resetPassword));
 router.patch('/changeRole', [auth, admin], asyncCatch(changeRole));
 
 router.route('/').get(asyncCatch(getAllUsers)); //.post(asyncCatch(createUser))
