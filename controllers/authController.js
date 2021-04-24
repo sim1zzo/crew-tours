@@ -54,7 +54,6 @@ exports.logIn = async (req, res) => {
   if (!user) return res.status(400).send('Invalid password or email');
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  console.log(validPassword);
   if (!validPassword) res.status(400).send('Invalid email or password');
 
   //  Information Exper Principle all the information about token are handled by user
