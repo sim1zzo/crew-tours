@@ -16,7 +16,7 @@ const router = express.Router();
 router
   .route('/')
   .get(asyncCatch(getAllTours))
-  .post(auth, asyncCatch(createTour));
+  .post([auth, admin], asyncCatch(createTour));
 
 router
   .route('/:id')
