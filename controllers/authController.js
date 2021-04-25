@@ -3,6 +3,7 @@ const Joi = require('joi');
 const express = require('express');
 const { User, validate } = require('../models/user');
 const sendEmail = require('../utils/email');
+const jwt = require('jsonwebtoken');
 
 exports.userSignUp = async (req, res) => {
   const { error } = validate(req.body);
@@ -87,7 +88,9 @@ exports.forgottenPassword = async (req, res) => {
   if (!user) return res.status(400).send('Invalid email or password');
 
   // generate a new token
-  const token = user.generateAuthToken();
+  let token = user.generateAuthToken();
+  console.log(token);
+
   const url = `${req.protocol}://${req.get(
     'host'
   )}/api/users/resetPassword/${token}`;
@@ -130,7 +133,28 @@ exports.changePassword = async (req, res) => {
   });
 };
 
-exports.resetPassword = async (req, res) => {};
+exports.resetPassword = async (req, res) => {
+  const token = req.params.token;
+
+  let user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(404).send('No user found');
+
+  if (req.body.password !== req.body.password2)
+    return res.status(400).send('No matching passwords');
+
+  const valid = isValidPassword(req.body.password);
+  if (!valid) return res.status(400).send('Invalid password');
+
+  const salt = await bcrypt.genSalt(10);
+  const password = await bcrypt.hash(req.body.password, salt);
+  const password2 = await bcrypt.hash(req.body.password2, 10);
+
+  user.password = password;
+  user.password2 = password2;
+  await user.save();
+
+  res.status(200).json({ status: 'ok', data: { user } });
+};
 
 exports.changeRole = async (req, res) => {
   let user = await User.findOne({ email: req.body.email });

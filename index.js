@@ -1,6 +1,7 @@
 const error = require('./middlewares/errorMiddleware');
 const express = require('express');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
 
@@ -12,6 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // MIDDLEWARES
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
