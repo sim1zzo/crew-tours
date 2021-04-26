@@ -41,6 +41,34 @@ const tourSchema = new mongoose.Schema({
   pictures: [String],
   maxNumberOfParticipant: Number,
   tourDates: [Date],
+
+  departureLocation: {
+    type: {
+      type: String,
+      default: 'Point',
+      enum: ['Point'],
+    },
+    coordinates: [Number], // long and lat
+    formattedAddress: String,
+    summary: String,
+  },
+  locations: [
+    {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      formattedAddress: String,
+      summary: String,
+      day: Number,
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
@@ -57,6 +85,20 @@ function validateTour(tour) {
     pictures: Joi.array().required(),
     tourDates: Joi.array().items(Joi.date()),
     maxNumberOfParticipant: Joi.number(),
+    departureLocation: Joi.object().keys({
+      type: Joi.string().default(['Point']),
+      coordinates: Joi.array().items(Joi.number()),
+      summary: Joi.string(),
+      formattedAddress: Joi.string(),
+    }),
+    locations: Joi.array().items(
+      Joi.object().keys({
+        type: Joi.string().default(['Point']),
+        coordinates: Joi.array().items(Joi.number()),
+        summary: Joi.string(),
+        day: Joi.number(),
+      })
+    ),
   });
   return schema.validate(tour);
 }
