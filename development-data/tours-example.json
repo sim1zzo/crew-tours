@@ -1,6 +1,6 @@
 [
   {
-    "name": "This is tour 1",
+    "name": "This is tour 1 Bahamas",
     "price": 100,
     "tourRating": 4.6,
     "duration": 2,
@@ -9,102 +9,308 @@
     "coverPicture": "tour-1-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
-    "maxNumberOfParticipant": 15
+    "maxNumberOfParticipant": 15,
+    "guides": ["60846ec4ae445bbdd553488c", "6082e3136e84b210fb171568"],
+    "departureLocation": {
+      "formattedAddress": "One Casino Drive, Suite 41, Paradise Island, Bahamas",
+      "summary": "Nassau Trip",
+      "coordinates": [-80.185942, 25.774772]
+    },
+    "locations": [
+      {
+        "summary": "Chateau Del Mar, Bahamas",
+        "coordinates": [-77.48734474246001, 25.067601981406508],
+        "day": 1
+      },
+      {
+        "summary": "Fort Montagu, E Bay St, Bahamas",
+        "coordinates": [-77.30674142844637, 25.074310911171857],
+        "day": 2
+      }
+    ]
   },
   {
-    "name": "This is tour 2",
+    "name": "This is tour 2 Disney Parks",
     "price": 200,
     "tourRating": 4.6,
-    "duration": 5,
+    "duration": 2,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-2-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-01-15,11:00", "2022-02-15,11:00", "2022-03-15,11:00"],
-    "maxNumberOfParticipant": 20
+    "maxNumberOfParticipant": 20,
+    "departureLocation": {
+      "summary": "Port Canaveral",
+      "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
+      "coordinates": [-80.62956518614469, 28.414291445090193]
+    },
+    "locations": [
+      {
+        "summary": "Epcot Center",
+        "formattedAddress": "200 Epcot Center Dr, Orlando, FL 32821, United States",
+        "coordinates": [-81.54885759542292, 28.378138139156196],
+        "day": 1
+      },
+      {
+        "summary": "Magic Kingdom Park",
+        "formattedAddress": "1180 Seven Seas Drive, Lake Buena Vista, FL 32836, United States",
+        "coordinates": [-77.30674142844637, 25.074310911171857],
+        "day": 2
+      }
+    ]
   },
   {
-    "name": "This is tour 3",
-    "price": 600,
+    "name": "This is tour 3 FLORIDA TOUR",
+    "price": 370,
     "tourRating": 4.6,
-    "duration": 6,
+    "duration": 3,
     "tourReview": 13,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-3-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"],
-    "maxNumberOfParticipant": 10
+    "maxNumberOfParticipant": 10,
+    "departureLocation": {
+      "summary": "Port Canaveral",
+      "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
+      "coordinates": [-80.62956518614469, 28.414291445090193]
+    },
+    "locations": [
+      {
+        "summary": "Wynwood Walls",
+        "formattedAddress": "2520 NW 2nd Ave, Miami, FL",
+        "coordinates": [-80.1993027448804, 25.801467154301328],
+        "day": 1
+      },
+      {
+        "summary": "Miami Beach Botanical Garden",
+        "formattedAddress": "2000 Convention Center Dr, Miami Beach, FL 33139, United States",
+        "coordinates": [-80.1354531818894, 25.79718680919419],
+        "day": 2
+      },
+      {
+        "summary": "Vizcaya Museum & Gardens",
+        "formattedAddress": "3251 S Miami Ave, Miami, FL 33129, United States",
+        "coordinates": [-80.20824603054878, 25.75104329235812],
+        "day": 3
+      }
+    ]
   },
   {
-    "name": "This is tour 4",
-    "price": 1000,
-    "tourRating": 4.6,
-    "duration": 5,
+    "name": "This is tour 4 Naples Italy",
+    "price": 400,
+    "tourRating": 4.8,
+    "duration": 3,
     "tourReview": 63,
-    "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "description": "A walk into the heart of Naples, enjoing amazing food and people",
+    "coverPicture": "tour-4-cover.jpg",
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "pictures": ["image1.jpg", "image2.jpg"],
-    "maxNumberOfParticipant": 17
+    "maxNumberOfParticipant": 17,
+    "departureLocation": {
+      "formattedAddress": "Piazzale Molo Carlo Pisacane, 80133 Napoli NA",
+      "summary": "Neaples (ITA) Trip",
+      "coordinates": [14.263333449416622, 40.844406398670436]
+    },
+    "locations": [
+      {
+        "summary": "Archaeological Park of Pompeii",
+        "formattedAddress": "Via Plinio, 26, 80045 Pompei NA",
+        "coordinates": [40.74812, 14.48505],
+        "day": 1
+      },
+      {
+        "summary": "Real Bosco di Capodimonte",
+        "formattedAddress": "Via Miano, 2, 80131 Napoli NA",
+        "coordinates": [14.250558853708089, 40.867579691882014],
+        "day": 2
+      },
+      {
+        "summary": "Mount Vesuvius",
+        "formattedAddress": "80044 Ottaviano, Metropolitan City of Naples",
+        "coordinates": [14.428819854760581, 40.82355029324146],
+        "day": 3
+      }
+    ]
   },
   {
-    "name": "This is tour 5",
+    "name": "This is tour 5 California USA",
     "price": 500,
     "tourRating": 4.6,
-    "duration": 6,
+    "duration": 4,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-5-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
-    "maxNumberOfParticipant": 13
+    "maxNumberOfParticipant": 13,
+    "departureLocation": {
+      "formattedAddress": "3165 Pacific Hwy, San Diego, CA 92101, United States",
+      "summary": "Port of San Diego",
+      "coordinates": [-117.17714, 32.73567]
+    },
+    "locations": [
+      {
+        "summary": "The Getty CA, United States",
+        "formattedAddress": "1200 Getty Center Dr, Los Angeles, CA 90049, United States",
+        "coordinates": [-118.47402, 34.07822],
+        "day": 1
+      },
+      {
+        "summary": "Universal Studios Hollywood",
+        "formattedAddress": "100 Universal City Plaza, Universal City, CA 91608, United States",
+        "coordinates": [-118.35338, 34.13829],
+        "day": 2
+      },
+      {
+        "summary": "Santa Monica Pier",
+        "formattedAddress": "200 Santa Monica Pier, Santa Monica, CA 90401, United States",
+        "coordinates": [-118.49602, 34.01024],
+        "day": 3
+      },
+      {
+        "summary": "Hollywood Sign Trail",
+        "formattedAddress": "Unnamed Road, Los Angeles, CA 90068, United States",
+        "coordinates": [-118.3192, 34.13055],
+        "day": 4
+      }
+    ]
   },
   {
-    "name": "This is tour 6",
-    "price": 300,
+    "name": "This is tour 6 Melbourne",
+    "price": 500,
     "tourRating": 4.6,
-    "duration": 1,
+    "duration": 3,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-6-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
-    "maxNumberOfParticipant": 40
+    "maxNumberOfParticipant": 40,
+    "departureLocation": {
+      "formattedAddress": "Pier St, Port Melbourne VIC 3207, Australia",
+      "summary": "Melbourne Port",
+      "coordinates": [144.91249, -37.83288]
+    },
+    "locations": [
+      {
+        "summary": "ArtVo",
+        "formattedAddress": "Shop NCF, 07 Level/1 26 Star Cres, Docklands VIC 3008, Australia",
+        "coordinates": [144.93768, -37.81271],
+        "day": 1
+      },
+      {
+        "summary": "Great Ocean Road Tours - Best 12 Apostles Tours from Melbourne",
+        "formattedAddress": "Suite 4/09, 2 Queen St, Melbourne VIC 3000, Australia",
+        "coordinates": [144.96261, -37.81841],
+        "day": 2
+      },
+      {
+        "summary": "Eureka Skydeck 88",
+        "formattedAddress": "7 Riverside Quay, Southbank VIC 3006, Australia",
+        "coordinates": [144.96473, -37.82113],
+        "day": 3
+      }
+    ]
   },
   {
-    "name": "This is tour 7",
+    "name": "This is tour 7 Spain",
     "price": 700,
     "tourRating": 4.6,
     "duration": 3,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-8-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
-    "maxNumberOfParticipant": 35
+    "maxNumberOfParticipant": 35,
+    "departureLocation": {
+      "formattedAddress": "Av. del Puerto, 314, 11006 Cádiz, Spain",
+      "summary": "Puerto de Cádiz",
+      "coordinates": [-6.29684, 36.58117]
+    },
+    "locations": [
+      {
+        "summary": "Catedral de Cádiz",
+        "formattedAddress": "Plaza de la Catedral, s/n, 11005 Cádiz, Spain",
+        "coordinates": [-6.29531, 36.52919],
+        "day": 1
+      },
+      {
+        "summary": "Plaza de España",
+        "formattedAddress": "Av. Isabel la Católica, 41004 Sevilla, Spain",
+        "coordinates": [-5.98684, 37.37743],
+        "day": 2
+      },
+      {
+        "summary": "Isla de las Palomas",
+        "formattedAddress": "Unnamed Road, 11380 Tarifa, Cádiz, Spain",
+        "coordinates": [-5.60972, 37.00283],
+        "day": 3
+      }
+    ]
   },
   {
-    "name": "This is tour 8",
+    "name": "This is tour 8 Scotland",
     "price": 800,
     "tourRating": 4.6,
     "duration": 8,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-8-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
-    "maxNumberOfParticipant": 8
+    "maxNumberOfParticipant": 8,
+    "departureLocation": {
+      "formattedAddress": "Shore Rd, South Queensferry EH30 9SQ, United Kingdom",
+      "summary": "Scotland Trip - Port Edgar Marina",
+      "coordinates": [-3.40789, 55.99769]
+    },
+    "locations": [
+      {
+        "summary": "Palace of Holyroodhouse",
+        "formattedAddress": "Canongate, Edinburgh EH8 8DX, United Kingdom",
+        "coordinates": [-3.1723, 55.95283],
+        "day": 1
+      },
+      {
+        "summary": "Edinburgh Castle",
+        "formattedAddress": "Castlehill, Edinburgh EH1 2NG, United Kingdom",
+        "coordinates": [-3.19987, 55.94871],
+        "day": 2
+      }
+    ]
   },
   {
-    "name": "This is tour 9",
+    "name": "This is tour 9 Messico",
     "price": 900,
     "tourRating": 4.6,
-    "duration": 7,
+    "duration": 2,
     "tourReview": 3,
     "description": "Description for the tour",
-    "coverPicture": "tour-1-cover.jpg",
+    "coverPicture": "tour-9-cover.jpg",
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
-    "maxNumberOfParticipant": 10
+    "maxNumberOfParticipant": 10,
+    "departureLocation": {
+      "formattedAddress": "Costera Sur, 77600 Cozumel, QROO, Mexico",
+      "summary": "Cozumel Cruise Terminal",
+      "coordinates": [-86.97795, 20.49174]
+    },
+    "locations": [
+      {
+        "summary": "Museo de Cozumel",
+        "formattedAddress": "Av. Rafael E. Melgar 321, Centro, 77600 San Miguel de Cozumel, Q.R., Mexico",
+        "coordinates": [-86.9491, 20.51256],
+        "day": 1
+      },
+      {
+        "summary": "Tulum Archaeological Zone",
+        "formattedAddress": "Carretera Federal, Cancun - Chetumal Km 230, 307, 77780 Tulum, Q.R., Mexico",
+        "coordinates": [-87.43098, 20.2209],
+        "day": 2
+      }
+    ]
   }
 ]

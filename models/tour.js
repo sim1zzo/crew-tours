@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 
 const tourSchema = new mongoose.Schema({
   name: {
@@ -41,7 +42,12 @@ const tourSchema = new mongoose.Schema({
   pictures: [String],
   maxNumberOfParticipant: Number,
   tourDates: [Date],
-
+  guides: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
+  ],
   departureLocation: {
     type: {
       type: String,
@@ -67,7 +73,7 @@ const tourSchema = new mongoose.Schema({
   ],
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now(), // this can even be retrieved by the object id.
   },
 });
 
@@ -85,6 +91,7 @@ function validateTour(tour) {
     pictures: Joi.array().required(),
     tourDates: Joi.array().items(Joi.date()),
     maxNumberOfParticipant: Joi.number(),
+    guides: Joi.array().items(Joi.objectId),
     departureLocation: Joi.object().keys({
       type: Joi.string().default(['Point']),
       coordinates: Joi.array().items(Joi.number()),
@@ -96,6 +103,7 @@ function validateTour(tour) {
         type: Joi.string().default(['Point']),
         coordinates: Joi.array().items(Joi.number()),
         summary: Joi.string(),
+        formattedAddress: Joi.string(),
         day: Joi.number(),
       })
     ),

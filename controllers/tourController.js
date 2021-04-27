@@ -1,3 +1,4 @@
+const { response } = require('express');
 const { Tour, validate } = require('../models/tour');
 
 exports.getAllTours = async (req, res) => {
@@ -9,7 +10,11 @@ exports.getAllTours = async (req, res) => {
   );
   const tours = await Tour.find(JSON.parse(queryString))
     .sort('name -price ')
-    .select('-__v');
+    .select('-__v')
+    .populate({
+      path: 'guides',
+      select: '-password -password2 -__v',
+    });
   return res.json({
     status: 'Success',
     numbersOfTour: tours.length,
@@ -20,7 +25,10 @@ exports.getAllTours = async (req, res) => {
 };
 
 exports.getOneTour = async (req, res) => {
-  const tour = await Tour.findById(req.params.id);
+  const tour = await Tour.findById(req.params.id).populate({
+    path: 'guides',
+    select: '-password -password2 -__v',
+  });
   if (!tour)
     return res.status(404).json({
       status: 'Failed',
@@ -53,7 +61,8 @@ exports.updateTour = async (req, res) => {
       .status(400)
       .json({ status: 'Failed', messagge: error.details[0].message });
 
-  const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+  const update = req.body;
+  const tour = await Tour.findOneAndUpdate(req.params.id, update, {
     new: true,
     runValidators: true,
   });
