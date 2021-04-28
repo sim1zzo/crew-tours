@@ -77,6 +77,14 @@ const tourSchema = new mongoose.Schema({
   },
 });
 
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-password -password2 -__v',
+  });
+  next();
+});
+
 const Tour = mongoose.model('Tour', tourSchema);
 
 function validateTour(tour) {

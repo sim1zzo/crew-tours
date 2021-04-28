@@ -10,11 +10,8 @@ exports.getAllTours = async (req, res) => {
   );
   const tours = await Tour.find(JSON.parse(queryString))
     .sort('name -price ')
-    .select('-__v')
-    .populate({
-      path: 'guides',
-      select: '-password -password2 -__v',
-    });
+    .select('-__v');
+
   return res.json({
     status: 'Success',
     numbersOfTour: tours.length,
@@ -25,10 +22,7 @@ exports.getAllTours = async (req, res) => {
 };
 
 exports.getOneTour = async (req, res) => {
-  const tour = await Tour.findById(req.params.id).populate({
-    path: 'guides',
-    select: '-password -password2 -__v',
-  });
+  const tour = await Tour.findById(req.params.id);
   if (!tour)
     return res.status(404).json({
       status: 'Failed',
