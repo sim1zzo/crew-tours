@@ -1,4 +1,4 @@
-const { response } = require('express');
+// const { response } = require('express');
 const { Tour, validate } = require('../models/tour');
 
 exports.getAllTours = async (req, res) => {

@@ -8,6 +8,7 @@ process.on('uncaughtException', (ex) => {
 
 require('./startup/log');
 require('./startup/db')();
+require('./startup/validation')();
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
