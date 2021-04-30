@@ -1,6 +1,7 @@
 const asyncCatch = require('../middlewares/asyncCatch');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
+const reviewRouter = require('../routes/reviewsRoutes');
 const express = require('express');
 const {
   getOneTour,
@@ -11,7 +12,7 @@ const {
 } = require('../controllers/tourController');
 const router = express.Router();
 
-// router.param('/', isValidTour);
+router.use('/:id/reviews', reviewRouter);
 
 router
   .route('/')

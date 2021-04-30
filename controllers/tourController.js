@@ -22,7 +22,7 @@ exports.getAllTours = async (req, res) => {
 };
 
 exports.getOneTour = async (req, res) => {
-  const tour = await Tour.findById(req.params.id);
+  const tour = await Tour.findById(req.params.id).populate('reviews');
   if (!tour)
     return res.status(404).json({
       status: 'Failed',

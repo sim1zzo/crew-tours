@@ -2,79 +2,87 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 // Joi.objectId = require('joi-objectid')(Joi);
 
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Every tour has to have a name'],
-    trim: true,
-    minlength: 5,
-    maxlength: 255,
-    unique: true,
-  },
-  price: {
-    type: Number,
-    required: [true, 'Every tour has to have a price'],
-    get: (t) => Math.round(t),
-    set: (t) => Math.round(t),
-  },
-  tourRating: {
-    type: Number,
-    default: 4.5,
-    min: 1,
-    max: 5,
-  },
-  duration: {
-    type: Number,
-    required: [true, 'Every tour has to have a duration'],
-  },
-  tourReview: {
-    type: Number,
-    default: 0,
-  },
-  description: {
-    type: String,
-    trim: true,
-  },
-  coverPicture: {
-    type: String,
-    required: [true, 'Tour has to have a picture'],
-  },
-  pictures: [String],
-  maxNumberOfParticipant: Number,
-  tourDates: [Date],
-  guides: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-    },
-  ],
-  departureLocation: {
-    type: {
+const tourSchema = new mongoose.Schema(
+  {
+    name: {
       type: String,
-      default: 'Point',
-      enum: ['Point'],
+      required: [true, 'Every tour has to have a name'],
+      trim: true,
+      minlength: 5,
+      maxlength: 255,
+      unique: true,
     },
-    coordinates: [Number], // long and lat
-    formattedAddress: String,
-    summary: String,
-  },
-  locations: [
-    {
+    price: {
+      type: Number,
+      required: [true, 'Every tour has to have a price'],
+      get: (t) => Math.round(t),
+      set: (t) => Math.round(t),
+    },
+    tourRating: {
+      type: Number,
+      default: 4.5,
+      min: 1,
+      max: 5,
+    },
+    duration: {
+      type: Number,
+      required: [true, 'Every tour has to have a duration'],
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
+    coverPicture: {
+      type: String,
+      required: [true, 'Tour has to have a picture'],
+    },
+    pictures: [String],
+    maxNumberOfParticipant: Number,
+    tourDates: [Date],
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
+    departureLocation: {
       type: {
         type: String,
         default: 'Point',
         enum: ['Point'],
       },
-      coordinates: [Number],
+      coordinates: [Number], // long and lat
       formattedAddress: String,
       summary: String,
-      day: Number,
     },
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now(), // this can even be retrieved by the object id.
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        coordinates: [Number],
+        formattedAddress: String,
+        summary: String,
+        day: Number,
+      },
+    ],
+    createdAt: {
+      type: Date,
+      default: Date.now(), // this can even be retrieved by the object id.
+    },
   },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
+
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
 });
 
 tourSchema.pre(/^find/, function (next) {
@@ -93,7 +101,6 @@ function validateTour(tour) {
     price: Joi.number().required(),
     tourRating: Joi.number(),
     duration: Joi.number().required(),
-    tourReview: Joi.number(),
     description: Joi.string(),
     coverPicture: Joi.string().required(),
     pictures: Joi.array().required(),

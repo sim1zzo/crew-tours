@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
+const reviewsRouter = require('./routes/reviewsRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.static('./public'));
 
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/reviews', reviewsRouter);
 app.use(error);
 
 app.all('*', (req, res, next) => {
