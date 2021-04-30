@@ -8,6 +8,7 @@ const {
   getUser,
   deleteUser,
   updateUser,
+  getAllGuides,
 } = require('../controllers/userController');
 
 const {
@@ -22,6 +23,7 @@ const {
 const router = express.Router();
 
 router.get('/me', auth, asyncCatch(getMe));
+router.get('/guides', [auth, admin], asyncCatch(getAllGuides));
 router.post('/signUp', asyncCatch(userSignUp));
 router.post('/login', asyncCatch(logIn));
 router.patch('/changePassword', auth, asyncCatch(changePassword));
@@ -29,7 +31,7 @@ router.post('/forgottenPassword', asyncCatch(forgottenPassword));
 router.patch('/resetPassword/:token', asyncCatch(resetPassword));
 router.patch('/changeRole', [auth, admin], asyncCatch(changeRole));
 
-router.route('/').get(asyncCatch(getAllUsers)); //.post(asyncCatch(createUser))
+router.route('/').get([auth, admin], asyncCatch(getAllUsers)); //.post(asyncCatch(createUser))
 
 router
   .route('/:id')

@@ -21,6 +21,7 @@ exports.userSignUp = async (req, res) => {
     password: req.body.password,
     password2: req.body.password2,
     role: req.body.role,
+    avatar: req.body.avatar,
   });
 
   if (user.password !== user.password2)
@@ -28,7 +29,7 @@ exports.userSignUp = async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
-  user.password2 = await bcrypt.hash(user.password2, 10);
+  user.password2 = undefined;
 
   const token = user.generateAuthToken();
   await user.save();
@@ -77,9 +78,7 @@ function isValidPassword(passw) {
 }
 
 exports.getMe = async (req, res) => {
-  const user = await User.findById(req.user._id).select(
-    '-password -password2 -__v'
-  );
+  const user = await User.findById(req.user._id).select('-password -__v');
   res.send(user);
 };
 
@@ -147,10 +146,10 @@ exports.resetPassword = async (req, res) => {
 
   const salt = await bcrypt.genSalt(10);
   const password = await bcrypt.hash(req.body.password, salt);
-  const password2 = await bcrypt.hash(req.body.password2, 10);
+  // const password2 = await bcrypt.hash(req.body.password2, 10);
 
   user.password = password;
-  user.password2 = password2;
+  user.password2 = undefined;
   await user.save();
 
   res.status(200).json({ status: 'ok', data: { user } });

@@ -3,6 +3,8 @@ node_modules/
 
 config.env
 .eslintrc.json
+development-data/users.json
+development-data/reviews.json
 requests.http
 
 # Ignore artifacts:

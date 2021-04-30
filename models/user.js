@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     type: 'String',
     required: [true, 'Every user must have a name'],
     trim: true,
-    minlength: 5,
+    minlength: 4,
     maxlength: 50,
   },
   email: {
@@ -27,9 +27,10 @@ const userSchema = new mongoose.Schema({
   },
   password2: {
     type: 'String',
-    required: [true, 'Every user must have a password confirmation'],
-    minlength: 5,
-    maxlength: 1024,
+    // required: [true, 'Every user must have a password confirmation'],
+    ref: 'password',
+    // minlength: 5,
+    // maxlength: 1024,
   },
   avatar: String,
   role: {
@@ -51,10 +52,15 @@ const User = mongoose.model('User', userSchema);
 
 function validateUser(user) {
   const schema = Joi.object({
-    name: Joi.string().required().min(5).max(50),
+    name: Joi.string().required().min(4).max(50),
     email: Joi.string().required().min(5).max(255).email(),
+    avatar: Joi.string(),
     password: Joi.string().required().min(5).max(255),
-    password2: Joi.string().required().min(5).max(255),
+    password2: Joi.any()
+      .equal(Joi.ref('password'))
+      .required()
+      .label('password2')
+      .options({ messages: { 'any.only': '{{#label}} does not match' } }),
   });
 
   return schema.validate(user);

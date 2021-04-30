@@ -69,6 +69,16 @@ exports.updateUser = async (req, res) => {
   });
 };
 
+exports.getAllGuides = async (req, res) => {
+  const guides = await User.find({ role: 'guide' });
+  return res.status(200).json({
+    status: 'OK',
+    data: {
+      guides,
+    },
+  });
+};
+
 // exports.createUser = async (req, res) => {
 //   const { error } = validate(req.body);
 //   if (error)
