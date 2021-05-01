@@ -80,6 +80,7 @@ const tourSchema = new mongoose.Schema(
 );
 
 tourSchema.index({ price: 1 });
+tourSchema.index({ departureLocation: '2dsphere' });
 
 tourSchema.virtual('reviews', {
   ref: 'Review',

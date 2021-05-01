@@ -36,6 +36,8 @@ reviewSchema.pre(/^find/, function (next) {
   next();
 });
 
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+
 const Review = mongoose.model('Review', reviewSchema);
 
 function validateReview(review) {

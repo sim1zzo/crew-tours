@@ -9,6 +9,7 @@ const {
   createTour,
   deleteTour,
   updateTour,
+  getToursNearMe,
 } = require('../controllers/tourController');
 const router = express.Router();
 
@@ -24,5 +25,7 @@ router
   .get(asyncCatch(getOneTour))
   .patch([auth, admin], asyncCatch(updateTour))
   .delete([auth, admin], asyncCatch(deleteTour));
+
+router.route('/nearMe/:span/:latlong').get(asyncCatch(getToursNearMe));
 
 module.exports = router;
