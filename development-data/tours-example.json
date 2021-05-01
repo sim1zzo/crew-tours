@@ -20,12 +20,12 @@
     "locations": [
       {
         "summary": "Chateau Del Mar, Bahamas",
-        "coordinates": [-77.48734474246001, 25.067601981406508],
+        "coordinates": [-77.31219, 25.08238],
         "day": 1
       },
       {
         "summary": "Fort Montagu, E Bay St, Bahamas",
-        "coordinates": [-77.30674142844637, 25.074310911171857],
+        "coordinates": [-77.30667, 25.07417],
         "day": 2
       }
     ]
@@ -46,19 +46,19 @@
     "departureLocation": {
       "summary": "Port Canaveral",
       "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
-      "coordinates": [-80.62956518614469, 28.414291445090193]
+      "coordinates": [-80.62986, 28.41439]
     },
     "locations": [
       {
         "summary": "Epcot Center",
         "formattedAddress": "200 Epcot Center Dr, Orlando, FL 32821, United States",
-        "coordinates": [-81.54885759542292, 28.378138139156196],
+        "coordinates": [-81.54947, 28.37496],
         "day": 1
       },
       {
         "summary": "Magic Kingdom Park",
         "formattedAddress": "1180 Seven Seas Drive, Lake Buena Vista, FL 32836, United States",
-        "coordinates": [-77.30674142844637, 25.074310911171857],
+        "coordinates": [-81.58199, 28.41788],
         "day": 2
       }
     ]
@@ -79,25 +79,25 @@
     "departureLocation": {
       "summary": "Port Canaveral",
       "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
-      "coordinates": [-80.62956518614469, 28.414291445090193]
+      "coordinates": [-80.62986, 28.41439]
     },
     "locations": [
       {
         "summary": "Wynwood Walls",
         "formattedAddress": "2520 NW 2nd Ave, Miami, FL",
-        "coordinates": [-80.1993027448804, 25.801467154301328],
+        "coordinates": [-80.2005, 25.80127],
         "day": 1
       },
       {
         "summary": "Miami Beach Botanical Garden",
         "formattedAddress": "2000 Convention Center Dr, Miami Beach, FL 33139, United States",
-        "coordinates": [-80.1354531818894, 25.79718680919419],
+        "coordinates": [-80.13549, 25.79582],
         "day": 2
       },
       {
         "summary": "Vizcaya Museum & Gardens",
         "formattedAddress": "3251 S Miami Ave, Miami, FL 33129, United States",
-        "coordinates": [-80.20824603054878, 25.75104329235812],
+        "coordinates": [-80.21042, 25.74462],
         "day": 3
       }
     ]
@@ -122,7 +122,7 @@
     "departureLocation": {
       "formattedAddress": "Piazzale Molo Carlo Pisacane, 80133 Napoli NA",
       "summary": "Neaples (ITA) Trip",
-      "coordinates": [14.263333449416622, 40.844406398670436]
+      "coordinates": [14.26201, 40.8456]
     },
     "locations": [
       {
@@ -132,15 +132,15 @@
         "day": 1
       },
       {
-        "summary": "Real Bosco di Capodimonte",
-        "formattedAddress": "Via Miano, 2, 80131 Napoli NA",
-        "coordinates": [14.250558853708089, 40.867579691882014],
+        "summary": "Marina di Capri",
+        "formattedAddress": "Marina di, Via Caterola, 80076 Capri NA",
+        "coordinates": [14.23974, 40.55829],
         "day": 2
       },
       {
         "summary": "Mount Vesuvius",
         "formattedAddress": "80044 Ottaviano, Metropolitan City of Naples",
-        "coordinates": [14.428819854760581, 40.82355029324146],
+        "coordinates": [14.42899, 40.82436],
         "day": 3
       }
     ]

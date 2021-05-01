@@ -11,6 +11,7 @@ exports.getAllTours = async (req, res) => {
   const tours = await Tour.find(JSON.parse(queryString))
     .sort('name -price ')
     .select('-__v');
+  // .explain(); cheking stats for the specific query. Helps to index db.
 
   return res.json({
     status: 'Success',
