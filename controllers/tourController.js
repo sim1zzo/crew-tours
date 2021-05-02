@@ -79,9 +79,9 @@ exports.getToursNearMe = async (req, res) => {
   const { span, latlong } = req.params;
   const [lat, long] = latlong.split(',');
   const radius = span / 6378.1; // documentation examples. In case something is !working.
-  if (!lat || !long)
-    return status(404).send('No latitude or longitute proveided.');
-  console.log(`lat ${lat},long ${long}, radius ${radius}`);
+  if (!lat || !long || !span)
+    return status(404).send('No latitude or longitute  or span provided.');
+  // console.log(`lat ${lat},long ${long}, radius ${radius}`);
 
   // the code below is from the documentation. https://docs.mongodb.com/manual/reference/operator/query/centerSphere/#mongodb-query-op.-centerSphere
   const tours = await Tour.find({
