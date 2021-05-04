@@ -1,10 +1,7 @@
-const bcrypt = require('bcrypt');
 const { User, validate } = require('../models/user');
 
 exports.getAllUsers = async (req, res) => {
-  const users = await User.find()
-    .sort('name')
-    .select('-__v -password -password2');
+  const users = await User.find().sort('name').select('-__v -password');
   if (!users)
     return res.json({
       status: 404,

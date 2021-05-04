@@ -11,6 +11,12 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
   console.log(`Running from ${process.env.NODE_ENV}`);
+} else if (process.env.NODE_ENV === 'production') {
+  app.use(morgan('tiny'));
+  console.log(`Running from ${process.env.NODE_ENV}`);
+} else if (process.env.NODE_ENV === 'test') {
+  app.use(morgan('short'));
+  console.log(`Running from ${process.env.NODE_ENV}`);
 }
 
 // MIDDLEWARES
