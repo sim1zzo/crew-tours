@@ -1,3 +1,4 @@
+const path = require('path');
 const error = require('./middlewares/errorMiddleware');
 const express = require('express');
 const morgan = require('morgan');
@@ -7,6 +8,12 @@ const usersRouter = require('./routes/usersRoutes');
 const reviewsRouter = require('./routes/reviewsRoutes');
 
 const app = express();
+
+// Setting the view engine with pug.
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views')); // this is a common way to build the path, in this way we don't have to worry about if / is present or not.'
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -23,8 +30,10 @@ if (process.env.NODE_ENV === 'development') {
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('./public'));
 
+app.get('/', (req, res) => {
+  res.status(200).render('home');
+});
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/reviews', reviewsRouter);
