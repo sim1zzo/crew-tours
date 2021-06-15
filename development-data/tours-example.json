@@ -1,6 +1,6 @@
 [
   {
-    "_id": "608c31898bab27d3e0b1f56c",
+    "_id": { "$oid": "608c31898bab27d3e0b1f56c" },
     "name": "This is tour 1 Bahamas",
     "price": 100,
     "tourRating": 4.6,
@@ -11,7 +11,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "maxNumberOfParticipant": 15,
-    "guides": ["608c33554a3e74d3d3d2eccf", "608c335f4a3e74d3d3d2ecd0"],
+    "guides": [
+      { "$oid": "608c33554a3e74d3d3d2eccf" },
+      { "$oid": "608c335f4a3e74d3d3d2ecd0" }
+    ],
     "departureLocation": {
       "formattedAddress": "One Casino Drive, Suite 41, Paradise Island, Bahamas",
       "summary": "Nassau Trip",
@@ -31,7 +34,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f56f",
+    "_id": { "$oid": "608c31898bab27d3e0b1f56f" },
     "name": "This is tour 2 Disney Parks",
     "price": 200,
     "tourRating": 4.6,
@@ -42,7 +45,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-01-15,11:00", "2022-02-15,11:00", "2022-03-15,11:00"],
     "maxNumberOfParticipant": 20,
-    "guides": ["608c33b14a3e74d3d3d2ecd1", "608c33bd4a3e74d3d3d2ecd2"],
+    "guides": [
+      { "$oid": "608c33b14a3e74d3d3d2ecd1" },
+      { "$oid": "608c33bd4a3e74d3d3d2ecd2" }
+    ],
     "departureLocation": {
       "summary": "Port Canaveral",
       "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
@@ -64,7 +70,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f572",
+    "_id": { "$oid": "608c31898bab27d3e0b1f572" },
     "name": "This is tour 3 FLORIDA TOUR",
     "price": 370,
     "tourRating": 4.6,
@@ -75,7 +81,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-06-15,11:00", "2022-07-15,11:00", "2022-08-15,11:00"],
     "maxNumberOfParticipant": 10,
-    "guides": ["608c33c64a3e74d3d3d2ecd3", "608c33d24a3e74d3d3d2ecd4"],
+    "guides": [
+      { "$oid": "608c33c64a3e74d3d3d2ecd3" },
+      { "$oid": "608c33d24a3e74d3d3d2ecd4" }
+    ],
     "departureLocation": {
       "summary": "Port Canaveral",
       "formattedAddress": "9155 Charles M Rowland Dr, Port Canaveral, FL 32920, United States",
@@ -103,7 +112,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f576",
+    "_id": { "$oid": "608c31898bab27d3e0b1f576" },
     "name": "This is tour 4 Naples Italy",
     "price": 400,
     "tourRating": 4.8,
@@ -115,9 +124,9 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "maxNumberOfParticipant": 17,
     "guides": [
-      "608c33df4a3e74d3d3d2ecd5",
-      "608c33554a3e74d3d3d2eccf",
-      "608c335f4a3e74d3d3d2ecd0"
+      { "$oid": "608c33df4a3e74d3d3d2ecd5" },
+      { "$oid": "608c33554a3e74d3d3d2eccf" },
+      { "$oid": "608c335f4a3e74d3d3d2ecd0" }
     ],
     "departureLocation": {
       "formattedAddress": "Piazzale Molo Carlo Pisacane, 80133 Napoli NA",
@@ -146,7 +155,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f57a",
+    "_id": { "$oid": "608c31898bab27d3e0b1f57a" },
     "name": "This is tour 5 California USA",
     "price": 500,
     "tourRating": 4.6,
@@ -157,7 +166,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "maxNumberOfParticipant": 13,
-    "guides": ["608c33b14a3e74d3d3d2ecd1", "608c33bd4a3e74d3d3d2ecd2"],
+    "guides": [
+      { "$oid": "608c33b14a3e74d3d3d2ecd1" },
+      { "$oid": "608c33bd4a3e74d3d3d2ecd2" }
+    ],
     "departureLocation": {
       "formattedAddress": "3165 Pacific Hwy, San Diego, CA 92101, United States",
       "summary": "Port of San Diego",
@@ -191,7 +203,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f57f",
+    "_id": { "$oid": "608c31898bab27d3e0b1f57f" },
     "name": "This is tour 6 Melbourne",
     "price": 500,
     "tourRating": 4.6,
@@ -202,7 +214,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2022-03-15,11:00", "2022-06-15,11:00", "2022-09-15,11:00"],
     "maxNumberOfParticipant": 40,
-    "guides": ["608c33c64a3e74d3d3d2ecd3", "608c33df4a3e74d3d3d2ecd5"],
+    "guides": [
+      { "$oid": "608c33c64a3e74d3d3d2ecd3" },
+      { "$oid": "608c33df4a3e74d3d3d2ecd5" }
+    ],
     "departureLocation": {
       "formattedAddress": "Pier St, Port Melbourne VIC 3207, Australia",
       "summary": "Melbourne Port",
@@ -230,7 +245,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f583",
+    "_id": { "$oid": "608c31898bab27d3e0b1f583" },
     "name": "This is tour 7 Spain",
     "price": 700,
     "tourRating": 4.6,
@@ -241,7 +256,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
     "maxNumberOfParticipant": 35,
-    "guides": ["608c33b14a3e74d3d3d2ecd1", "608c335f4a3e74d3d3d2ecd0"],
+    "guides": [
+      { "$oid": "608c33b14a3e74d3d3d2ecd1" },
+      { "$oid": "608c335f4a3e74d3d3d2ecd0" }
+    ],
     "departureLocation": {
       "formattedAddress": "Av. del Puerto, 314, 11006 Cádiz, Spain",
       "summary": "Puerto de Cádiz",
@@ -269,7 +287,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f587",
+    "_id": { "$oid": "608c31898bab27d3e0b1f587" },
     "name": "This is tour 8 Scotland",
     "price": 800,
     "tourRating": 4.6,
@@ -280,7 +298,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
     "maxNumberOfParticipant": 8,
-    "guides": ["608c33554a3e74d3d3d2eccf", "608c33df4a3e74d3d3d2ecd5"],
+    "guides": [
+      { "$oid": "608c33554a3e74d3d3d2eccf" },
+      { "$oid": "608c33df4a3e74d3d3d2ecd5" }
+    ],
     "departureLocation": {
       "formattedAddress": "Shore Rd, South Queensferry EH30 9SQ, United Kingdom",
       "summary": "Scotland Trip - Port Edgar Marina",
@@ -302,7 +323,7 @@
     ]
   },
   {
-    "_id": "608c31898bab27d3e0b1f58a",
+    "_id": { "$oid": "608c31898bab27d3e0b1f58a" },
     "name": "This is tour 9 Messico",
     "price": 900,
     "tourRating": 4.6,
@@ -313,7 +334,10 @@
     "pictures": ["image1.jpg", "image2.jpg"],
     "tourDates": ["2023-03-15,11:00", "2023-06-15,11:00", "2023-09-15,11:00"],
     "maxNumberOfParticipant": 10,
-    "guides": ["608c33b14a3e74d3d3d2ecd1", "608c33bd4a3e74d3d3d2ecd2"],
+    "guides": [
+      { "$oid": "608c33b14a3e74d3d3d2ecd1" },
+      { "$oid": "608c33bd4a3e74d3d3d2ecd2" }
+    ],
     "departureLocation": {
       "formattedAddress": "Costera Sur, 77600 Cozumel, QROO, Mexico",
       "summary": "Cozumel Cruise Terminal",
