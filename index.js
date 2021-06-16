@@ -32,7 +32,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.status(200).render('home');
+  res.status(200).render('home', {
+    tour: 'This is tour 2 Disney Parks Template',
+    user: 'Simone',
+  });
 });
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
