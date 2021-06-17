@@ -1,0 +1,46 @@
+extends home
+
+block content
+  main.main
+    .card-container
+
+      each tour in tours
+        .card 
+          .card__header 
+            .card_picture 
+              .card__picture-overlay &nbsp;
+              img.card__picture-img(src='images/tours/tour-1-cover.jpg', alt='Tour 1')
+            h3.heading-tertirary
+              span This is tour 1 Bahamas
+
+          .card__details
+            h4.card__sub-heading 1-day tour
+            p.card__text Fort Montagu, E Bay St, Bahamas
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-map-pin')
+                span  Bahamas
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-calendar')
+                span  March 2022
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-flag')
+                span 1
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-user')
+                span  15
+          
+          .card__footer 
+            p
+              span.card__footer-value  $100
+              |
+              span.card__footer-text  per person
+            p.card__ratings 
+              span.card__footer-text Score 4.6
+            a.btn.btn--green.btn--small Details
+
+            
+

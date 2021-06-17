@@ -7,13 +7,13 @@ html
     link(rel='stylesheet' href='css/style.css')
     link(rel='shortcut icon', type='image/png' href='images/shipicon.png')
     link(rel='stylesheet', type='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
-    title Crew-Tours Because Ship happens.
+    title Crew-Tours | #{title}
   
   body
     include header
 
-    section.overview
-      h1= tour
+    block content 
+      h1 Random placeholder.
 
     include footer
 
