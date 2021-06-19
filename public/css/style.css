@@ -156,12 +156,12 @@ body {
     linear,
     left top,
     right bottom,
-    from(rgba(19, 168, 222, 0.776)),
+    from (#eb4d4b),
     to(rgba(29, 64, 201, 0.85))
   );
   background-image: linear-gradient(
     to bottom right,
-    rgba(19, 168, 222, 0.776),
+    #eb4d4b,
     rgba(29, 64, 201, 0.85)
   );
 }
@@ -553,7 +553,7 @@ body {
 }
 
 .marker {
-  background-image: url('../img/pin.png');
+  background-image: url('../images/pin2.png');
   background-size: cover;
   width: 32px;
   height: 40px;
@@ -681,7 +681,7 @@ body {
   padding: 3rem;
   padding-bottom: 11rem;
   padding-top: calc(15rem + var(--section-rotate));
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }
 
 .cta {
@@ -732,8 +732,8 @@ body {
   width: 100%;
 }
 .cta__img--1 {
-  -webkit-transform: translate(-10%, -50%) scale(0.97);
-  transform: translate(-10%, -50%) scale(0.97);
+  -webkit-transform: translate(18%, -50%) scale(0.97);
+  transform: translate(18%, -50%) scale(0.97);
   z-index: 9;
 }
 .cta__img--2 {

@@ -1,5 +1,8 @@
 extends home
 
+block append head
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet')
 
 
 mixin overviewBox(label, text, icon)
@@ -68,13 +71,9 @@ block content
 
   section.section-cta
     .cta
-      
-      //- img.cta__img.cta__img--1(src=`/images/tours/${tour.pictures[1]}`, alt='Tour picture')
-      //- img.cta__img.cta__img--2(src=`/images/tours/${tour.pictures[0]}`, alt='Tour picture')
-      //- img.cta__img.cta__img--3(src=`/images/tours/${tour.pictures[2]}`, alt='Tour picture')
+      img.cta__img.cta__img--1(src=`/images/anchor_blue.png`, alt='A blue anchor image')
       .cta__content
-        h2.heading-secondary What are you waiting for?
-        p.cta__text Come and join us!
+        h2.heading-secondary Come and join us!
         button.btn.btn--green.span-all-rows Book now!
 
 
