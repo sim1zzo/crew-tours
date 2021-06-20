@@ -24,8 +24,18 @@ exports.getTour = async (req, res) => {
       title: `${tour.name} tour`,
       tour,
     });
+};
 
-  // const tour = await Tour.findOne({ name: name });
+exports.getLogin = async (req, res) => {
+  res.status(200).render('login', {
+    title: 'Log in!',
+  });
+};
+
+exports.getSignUp = async (req, res) => {
+  res.statu(200).render('signUp', {
+    title: 'Signing up',
+  });
 };
 
 function getName(name) {
