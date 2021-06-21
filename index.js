@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // MIDDLEWARES
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {

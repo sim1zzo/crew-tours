@@ -1,6 +1,7 @@
-let locations = JSON.parse(document.getElementById('map'));
-if (locations) {
-  locations = locations.dataset.locations;
+const mapBox = document.getElementById('map');
+
+if (mapBox) {
+  const locations = JSON.parse(mapBox.dataset.locations);
   // export const displayMap = (locations) => {
   mapboxgl.accessToken =
     'pk.eyJ1Ijoic2ltMXp6byIsImEiOiJja3EzcDA2dXIwcGl2Mm9sbmsza2YzZ254In0.pDTTzkZsx64T7UjBMJ-8mA';
