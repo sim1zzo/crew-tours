@@ -60,7 +60,7 @@ exports.logIn = async (req, res) => {
 
   //  Information Exper Principle all the information about token are handled by user
   const token = user.generateAuthToken();
-  res.send(token);
+  res.status(201).send(token);
 };
 
 function isValid(req) {
