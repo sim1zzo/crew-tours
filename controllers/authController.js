@@ -1,9 +1,8 @@
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
-const express = require('express');
+const jwt = require('jsonwebtoken');
 const { User, validate } = require('../models/user');
 const sendEmail = require('../utils/email');
-const jwt = require('jsonwebtoken');
 
 exports.userSignUp = async (req, res) => {
   const { error } = validate(req.body);
@@ -33,18 +32,27 @@ exports.userSignUp = async (req, res) => {
 
   const token = user.generateAuthToken();
   await user.save();
+  const coockieOptions = {
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
-  res.header('x-auth-token', token).json({
-    status: 'Ok',
-    data: {
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
+  res
+    .cookie('jwt', token, coockieOptions)
+    .header('x-auth-token', token)
+    .header('access-control-expose-headers', 'x-auth-token')
+    .json({
+      status: 'Ok',
+      token,
+      data: {
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
       },
-    },
-  });
+    });
 };
 
 exports.logIn = async (req, res) => {
@@ -60,7 +68,12 @@ exports.logIn = async (req, res) => {
 
   //  Information Exper Principle all the information about token are handled by user
   const token = user.generateAuthToken();
-  res.status(201).send(token);
+  const coockieOptions = {
+    httpOnly: true,
+  };
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  res.cookie('jwt', token, coockieOptions).status(200).send(token);
 };
 
 function isValid(req) {

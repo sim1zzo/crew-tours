@@ -33,17 +33,16 @@ if (process.env.NODE_ENV === 'development') {
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use((req, res, next) => {
-//   console.log(req.data);
-//   next();
-// });
+app.use((req, res, next) => {
+  console.log(req.cookies);
+  next();
+});
 
 app.use('/', viewRouter);
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use(error);
-
 app.all('*', (req, res, next) => {
   res.status(404).json({
     status: '404 Not Found',

@@ -5,14 +5,20 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       withCredentials: true,
-      method: 'post',
+      method: 'POST',
       url: 'http://127.0.0.1:3000/api/users/login',
       data: {
         email,
         password,
       },
     });
-    console.log(res);
+    if (res.data.status === 'ok' || res.data.status === 'OK') {
+      windows.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    }
+
+    // localStorage.setItem('token', res.data);
   } catch (error) {
     console.log(error);
   }
