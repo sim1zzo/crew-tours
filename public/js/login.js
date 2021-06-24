@@ -12,8 +12,8 @@ const login = async (email, password) => {
         password,
       },
     });
-    if (res.data.status === 'ok' || res.data.status === 'OK') {
-      windows.setTimeout(() => {
+    if (res.statusText === 'OK') {
+      window.setTimeout(() => {
         location.assign('/');
       }, 1500);
     }
