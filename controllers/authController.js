@@ -76,6 +76,13 @@ exports.logIn = async (req, res) => {
   res.cookie('jwt', token, coockieOptions).status(200).send(token);
 };
 
+exports.logOut = async (req, res) => {
+  res.cookie('jwt', '!logged', {
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'OK' });
+};
+
 function isValid(req) {
   const schema = Joi.object({
     email: Joi.string().min(5).max(255).required().email(),

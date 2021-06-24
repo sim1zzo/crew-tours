@@ -14,6 +14,7 @@ const {
 const {
   userSignUp,
   logIn,
+  logOut,
   getMe,
   resetPassword,
   forgottenPassword,
@@ -25,6 +26,7 @@ const router = express.Router();
 router.get('/me', auth, asyncCatch(getMe));
 router.get('/guides', [auth, admin], asyncCatch(getAllGuides));
 router.post('/signUp', asyncCatch(userSignUp));
+router.get('/logout', asyncCatch(logOut));
 router.post('/login', asyncCatch(logIn));
 router.patch('/changePassword', auth, asyncCatch(changePassword));
 router.post('/forgottenPassword', asyncCatch(forgottenPassword));

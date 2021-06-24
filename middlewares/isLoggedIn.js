@@ -4,10 +4,10 @@ const { User } = require('../models/user');
 
 module.exports = async function (req, res, next) {
   if (req.cookies.jwt) {
-    const token = req.cookies.jwt;
     try {
+      const token = req.cookies.jwt;
       const decoded = await promisify(jwt.verify)(
-        req.cookies.jwt,
+        token,
         process.env.jwtPrivateKey
       );
       // console.log(decoded);
@@ -20,9 +20,7 @@ module.exports = async function (req, res, next) {
       res.locals.user = user;
       return next();
     } catch (error) {
-      return res
-        .status(400)
-        .json({ status: 'error', message: 'Invalid token' });
+      return next();
     }
   }
 

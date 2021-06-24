@@ -32,6 +32,12 @@ exports.getLogin = async (req, res) => {
   });
 };
 
+exports.getLogout = async (req, res) => {
+  res.status(200).render('login', {
+    title: 'Log out',
+  });
+};
+
 exports.getSignUp = async (req, res) => {
   res.statu(200).render('signUp', {
     title: 'Signing up',

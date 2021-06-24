@@ -14,6 +14,7 @@ router.use(isLoggedIn);
 router.get('/', asyncCatch(getOverview));
 router.get('/tour/*', asyncCatch(getTour));
 router.get('/login', asyncCatch(getLogin));
+// router.get('/logout', asyncCatch(getLogin));
 // router.get('/singup', asyncCatch(getSignUp));
 
 module.exports = router;

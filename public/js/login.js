@@ -20,7 +20,7 @@ const login = async (email, password) => {
 
     // localStorage.setItem('token', res.data);
   } catch (error) {
-    console.log(error);
+    alert(error.message);
   }
 };
 
@@ -32,4 +32,21 @@ if (loginForm) {
     const password = document.getElementById('password').value;
     login(email, password);
   });
+}
+
+const logout = async () => {
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:3000/api/users/logout',
+    });
+    if (res.statusText === 'OK') location.reload();
+  } catch (err) {
+    alert('Something went wrong ' + err.message);
+  }
+};
+
+let logOutBtn = document.querySelector('.nav__el--logout');
+if (logOutBtn) {
+  logOutBtn.addEventListener('click', logout);
 }
