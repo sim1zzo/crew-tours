@@ -24,7 +24,7 @@ exports.userSignUp = async (req, res) => {
   });
 
   if (user.password !== user.password2)
-    return res.status(403).send('Passoword must match');
+    return res.status(403).send('Passwords must match');
 
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
@@ -78,6 +78,7 @@ exports.logIn = async (req, res) => {
 
 exports.logOut = async (req, res) => {
   res.cookie('jwt', '!logged', {
+    expires: new Date(Date.now() + 5 * 1000),
     httpOnly: true,
   });
   res.status(200).json({ status: 'OK' });

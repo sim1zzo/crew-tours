@@ -44,6 +44,12 @@ exports.getSignUp = async (req, res) => {
   });
 };
 
+exports.getAccount = async (req, res) => {
+  res.status(200).render('myaccount', {
+    title: 'Your account',
+  });
+};
+
 function getName(name) {
   if (name.indexOf('-') !== -1) {
     name = name.replace('-', ' ');

@@ -6,6 +6,7 @@ const {
   getOverview,
   getTour,
   getLogin,
+  getAccount,
   getSignUp,
 } = require('../controllers/viewsController');
 const router = express.Router();
@@ -14,7 +15,7 @@ router.use(isLoggedIn);
 router.get('/', asyncCatch(getOverview));
 router.get('/tour/*', asyncCatch(getTour));
 router.get('/login', asyncCatch(getLogin));
-// router.get('/logout', asyncCatch(getLogin));
+router.get('/me', auth, asyncCatch(getAccount));
 // router.get('/singup', asyncCatch(getSignUp));
 
 module.exports = router;

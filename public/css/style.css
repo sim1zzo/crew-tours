@@ -44,7 +44,7 @@ body {
 }
 
 .main {
-  background-color: #f7f7f7;
+  background-color: #fff;
   padding: 8rem 6rem;
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -121,7 +121,7 @@ body {
     from(#4596d5),
     to(#2844b4)
   );
-  background-image: linear-gradient(to right, #4596d5, #2844b4);
+  background-image: linear-gradient(to right, #d54545, #57b428);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
@@ -142,7 +142,7 @@ body {
 
 .heading-primary,
 .heading-tertirary {
-  color: #fff;
+  color: #faff0d;
   text-transform: uppercase;
   font-weight: 300;
 }
@@ -159,11 +159,11 @@ body {
     from (#eb4d4b),
     to(rgba(29, 64, 201, 0.85))
   );
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to bottom right,
     #eb4d4b,
     rgba(29, 64, 201, 0.85)
-  );
+  ); */
 }
 
 .heading-primary {
@@ -299,7 +299,7 @@ body {
 }
 
 .header {
-  background-color: #037;
+  background-color: #000;
   padding: 0 5rem;
   height: 8rem;
   position: relative;
@@ -610,12 +610,12 @@ body {
 
 .cta {
   position: relative;
-  max-width: 70rem;
+  max-width: 66rem;
   margin: 0 auto;
   overflow: hidden;
-  background-color: #023377;
-  padding: 0rem 5rem 0rem 15rem;
-  border-radius: 8rem;
+  background-color: #000000;
+  padding: 0rem 4rem 0rem 19rem;
+  border-radius: 1rem;
   -webkit-box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
 }
