@@ -1,7 +1,4 @@
-// import axios from 'axios';
-
 const login = async (email, password) => {
-  console.log(email, password);
   try {
     const res = await axios({
       withCredentials: true,
@@ -24,7 +21,7 @@ const login = async (email, password) => {
   }
 };
 
-let loginForm = document.querySelector('.form');
+let loginForm = document.querySelector('.form--login');
 if (loginForm) {
   loginForm = loginForm.addEventListener('submit', (event) => {
     event.preventDefault();

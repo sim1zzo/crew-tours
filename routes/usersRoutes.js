@@ -32,13 +32,13 @@ router.patch('/changePassword', auth, asyncCatch(changePassword));
 router.post('/forgottenPassword', asyncCatch(forgottenPassword));
 router.patch('/resetPassword/:token', asyncCatch(resetPassword));
 router.patch('/changeRole', [auth, admin], asyncCatch(changeRole));
+router.patch('/updateMe', auth, asyncCatch(updateUser));
 
 router.route('/').get([auth, admin], asyncCatch(getAllUsers)); //.post(asyncCatch(createUser))
 
 router
   .route('/:id')
   .get([auth, admin], asyncCatch(getUser)) // this will prevent a random user to insert an id and receive information that are not supposed to be showned.
-  .patch(auth, asyncCatch(updateUser))
   .delete([auth], asyncCatch(deleteUser));
 
 module.exports = router;

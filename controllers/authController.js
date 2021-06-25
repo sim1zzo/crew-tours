@@ -109,7 +109,7 @@ exports.forgottenPassword = async (req, res) => {
 
   // generate a new token
   let token = user.generateAuthToken();
-  console.log(token);
+  // console.log(token);
 
   const url = `${req.protocol}://${req.get(
     'host'

@@ -8,7 +8,7 @@
 }
 
 ::selection {
-  background-color: #0d61a0;
+  background-color: #a00d14;
   color: #fff;
 }
 
@@ -270,7 +270,6 @@ body {
   color: #0d61a0;
   display: inline-block;
   text-decoration: none;
-  border-bottom: 1px solid #4596d5;
   padding: 3px;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
@@ -1206,7 +1205,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .form__user-photo {
