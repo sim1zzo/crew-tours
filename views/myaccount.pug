@@ -11,7 +11,6 @@ block content
           form.form.form-user-data
             .form__group.form__photo-upload
               img.form__user-photo(src=`/images/users/${user.avatar}`, alt='User photo')
-              a.btn-text(href='') New avatar
             .form__group
               label.form__label(for='name') Name
               input#name.form__input(type='text', value=`${user.name}`, required, name='name')

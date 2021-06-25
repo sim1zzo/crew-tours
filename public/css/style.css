@@ -1206,6 +1206,9 @@ body {
   -ms-flex-align: center;
   align-items: center;
   font-size: 2rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 
 .form__user-photo {

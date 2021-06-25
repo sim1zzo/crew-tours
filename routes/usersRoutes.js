@@ -1,7 +1,8 @@
+const express = require('express');
 const asyncCatch = require('../middlewares/asyncCatch');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
-const express = require('express');
+
 const {
   getAllUsers,
   // createUser,
@@ -21,6 +22,7 @@ const {
   changeRole,
   changePassword,
 } = require('../controllers/authController');
+
 const router = express.Router();
 
 router.get('/me', auth, asyncCatch(getMe));
