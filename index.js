@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
 const reviewsRouter = require('./routes/reviewsRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
@@ -34,11 +35,18 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app.use(function (req, res, next) {
+//   res.setHeader('Content-Security-Policy', "script-src 'self' api.mapbox.com");
+//   return next();
+// });
+
 app.use('/', viewRouter);
 app.use('/api/tours', toursRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/reviews', reviewsRouter);
+app.use('/api/bookings', bookingRouter);
 app.use(error);
+
 app.all('*', (req, res, next) => {
   res.status(404).json({
     status: '404 Not Found',

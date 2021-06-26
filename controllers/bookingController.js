@@ -9,19 +9,24 @@ exports.getCheckoutSession = async (req, res) => {
   // https://stripe.com/docs/api/checkout/sessions/create
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/`,
-    cancel_url: `${req.protocol}://${req.get('host')}/tours`,
-    customer_email: req.user.email,
-    client_reference_id: req.params.id,
     line_items: [
       {
-        name: `${tour.name} Tour`,
-        description: tour.description,
-        amount: tour.price * 100,
-        currency: 'usd',
+        price_data: {
+          currency: 'usd',
+          amount: tour.price * 100,
+          product_data: {
+            name: `${tour.name} Tour`,
+            description: tour.description,
+          },
+        },
         quantity: 1,
       },
     ],
+    mode: 'payment',
+    customer_email: req.user.email,
+    client_reference_id: req.params.id,
+    success_url: `${req.protocol}://${req.get('host')}/`,
+    cancel_url: `${req.protocol}://${req.get('host')}/tours`,
   });
 
   res.status(200).json({ status: 'OK', session });

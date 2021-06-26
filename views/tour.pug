@@ -3,6 +3,7 @@ extends home
 block append head
   script(src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js')
   link(href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet')
+  
 
 
 mixin overviewBox(label, text, icon)
@@ -74,7 +75,11 @@ block content
       img.cta__img.cta__img--1(src=`/images/anchor_blue.png`, alt='A blue anchor image')
       .cta__content
         h2.heading-secondary Come and join us!
-        button.btn.btn--green.span-all-rows Book now!
+
+        if user
+          button.btn.btn--green.span-all-rows#book-tour(data-tour-id=`${tour.id}`) Book now!
+        else
+          a.btn.btn--green.span-all-rows(href='/login') Log in!
 
 
 
