@@ -8,6 +8,7 @@ html
       link(rel='stylesheet' href='/css/style.css')
       link(rel='shortcut icon', type='/images/png' href='/images/shipicon.png')
       link(rel='stylesheet', type='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      //- meta(http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;")
       
 
       title Crew-Tours ⤏ #{title}
@@ -20,9 +21,8 @@ html
 
     include footer
 
-    
-    script(src="http://js.stripe.com/v3/" 'unsafe-inline' 'unsafe-eval')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js')
+    script(src="https://js.stripe.com/v3/" 'unsafe-inline' 'unsafe-eval')
     script(src='/js/mapbox.js')
     script(src='/js/login.js')
     script(src='/js/updateUser.js')
