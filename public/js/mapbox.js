@@ -1,15 +1,11 @@
-const mapBox = document.getElementById('map');
+import mapboxgl from 'mapbox-gl';
 
-if (mapBox) {
-  const locations = JSON.parse(mapBox.dataset.locations);
-  // export const displayMap = (locations) => {
+export const displayMap = (locations) => {
   mapboxgl.accessToken =
     'pk.eyJ1Ijoic2ltMXp6byIsImEiOiJja3EzcDA2dXIwcGl2Mm9sbmsza2YzZ254In0.pDTTzkZsx64T7UjBMJ-8mA';
-
-  var map = new mapboxgl.Map({
-    container: 'map',
-
-    style: 'mapbox://styles/sim1zzo/ckq3pe76p64i818rld9hnep53',
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/sim1zzo/ckq3pe76p64i818rld9hnep53', // style URL
     scroolZoom: false,
   });
 
@@ -48,5 +44,4 @@ if (mapBox) {
       right: 100,
     },
   });
-  // };
-}
+};

@@ -4,6 +4,6 @@ const { getCheckoutSession } = require('./../controllers/bookingController');
 
 const router = express.Router();
 
-router.get('/checkout/:tourId', auth, getCheckoutSession);
+router.get('/checkout-session/:tourId', auth, getCheckoutSession);
 
 module.exports = router;

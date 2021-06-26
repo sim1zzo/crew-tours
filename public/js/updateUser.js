@@ -1,4 +1,6 @@
-const update = async (name, email) => {
+import axios from 'axios';
+
+export const update = async (name, email) => {
   try {
     const res = await axios({
       method: 'patch',
@@ -18,12 +20,12 @@ const update = async (name, email) => {
   }
 };
 
-const userDataForm = document.querySelector('.form-user-data');
+// const userDataForm = document.querySelector('.form-user-data');
 
-if (userDataForm)
-  userDataForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    update(name, email);
-  });
+// if (userDataForm)
+//   userDataForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     update(name, email);
+//   });
