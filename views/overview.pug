@@ -14,8 +14,6 @@ block content
               span= tour.name
 
           .card__details
-            h4.card__sub-heading= `${tour.duration}-day tour`
-            p.card__text= `${tour.description}`
             .card_data 
               svg.card__icon
                 use(xlink:href='/images/icons.svg#icon-map-pin')
@@ -32,17 +30,16 @@ block content
               svg.card__icon
                 use(xlink:href='/images/icons.svg#icon-user')
                 span=  `${tour.maxNumberOfParticipant} people`
+            h4.card__sub-heading= `${tour.duration}-day tour`
+            p.card__text= `${tour.description}`
           
           .card__footer 
             p
               span.card__footer-value= `$${tour.price}`
               |
-              span.card__footer-text  per person
-            p.card__ratings
-              span.card__footer-text= `Rating: `
-              |
-              span.card__footer-value= tour.tourRating
-            a.btn.btn--green.btn--small(href=`/tour/${tour.name.replace(' ', '-').toLowerCase()}`) Details
+              span.card__footer-text  price per person
+            p
+              a.btn.btn--green.btn--small(href=`/tour/${tour.name.replace(' ', '-').toLowerCase()}`) Info
 
             
 

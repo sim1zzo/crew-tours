@@ -1,5 +1,5 @@
 :root {
-  --section-rotate: 0vw;
+  --section-rotate: 1vw;
 }
 
 ::-moz-selection {
@@ -231,7 +231,7 @@ body {
 }
 
 .btn--green {
-  background-color: #4596d5;
+  background-color: #1a0dab;
   color: #fff;
 }
 .btn--green::after {
@@ -239,7 +239,7 @@ body {
 }
 
 .btn--small {
-  padding: 1.25rem 3rem !important;
+  padding: 1.25rem 8rem !important;
   font-size: 1.4rem !important;
 }
 

@@ -3,6 +3,7 @@ const error = require('./middlewares/errorMiddleware');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cookieParser = require('cookie-parser');
 
 const toursRouter = require('./routes/toursRoutes');
@@ -35,10 +36,10 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(function (req, res, next) {
-//   res.setHeader('Content-Security-Policy', "script-src 'self' api.mapbox.com");
-//   return next();
-// });
+app.use(function (req, res, next) {
+  res.setHeader('Content-Security-Policy', "script-src 'self' api.mapbox.com");
+  return next();
+});
 
 app.use('/', viewRouter);
 app.use('/api/tours', toursRouter);
