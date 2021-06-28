@@ -3,6 +3,8 @@ import axios from 'axios';
 export const login = async (email, password) => {
   try {
     const res = await axios({
+      // headers.append('Access-Control-Allow-Origin', 'http://localhost:3000'),
+      // headers.append('Access-Control-Allow-Credentials', 'true'),
       withCredentials: true,
       method: 'POST',
       url: 'http://127.0.0.1:3000/api/users/login',
@@ -19,7 +21,7 @@ export const login = async (email, password) => {
 
     // localStorage.setItem('token', res.data);
   } catch (error) {
-    alert(error.message);
+    alert('Something went wrong with ' + error.message);
   }
 };
 

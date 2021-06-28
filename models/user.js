@@ -32,7 +32,10 @@ const userSchema = new mongoose.Schema({
     // minlength: 5,
     // maxlength: 1024,
   },
-  avatar: String,
+  avatar: {
+    type: 'String',
+    default: 'default.jpg',
+  },
   role: {
     type: String,
     enum: ['user', 'guide', 'admin'],

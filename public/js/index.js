@@ -36,7 +36,9 @@ if (bookBtn)
 if (userDataForm)
   userDataForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    update(name, email);
+    const form = new FormData();
+    form.append('name', document.getElementById('name').value);
+    form.append('email', document.getElementById('email').value);
+    form.append('avatar', document.getElementById('avatar').files[0]);
+    update(form);
   });

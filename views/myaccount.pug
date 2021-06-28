@@ -1,24 +1,37 @@
 extends home 
 
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`images/icons.svg#icon-${icon}`)
+      | #{text}
 
 
 block content
   main.main
     .user-view
-      .user-view__content
-        .user-view__form-container
-          h2.heading-secondary.ma-bt-md= `${user.name.split(' ')[0]}'s account settings` 
-          form.form.form-user-data
-            .form__group.form__photo-upload
-              img.form__user-photo(src=`/images/users/${user.avatar}`, alt='User photo')
-            .form__group
-              label.form__label(for='name') Name
-              input#name.form__input(type='text', value=`${user.name}`, required, name='name')
-            .form__group.ma-bt-md
-              label.form__label(for='email') Email address
-              input#email.form__input(type='email', value=`${user.email}`, required, name='email')
-            .form__group.right
-              button.btn.btn--small.btn--green Save settings
+        nav.user-view__menu
+        ul.side-nav
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+
+        .user-view__content
+          .user-view__form-container
+            h2.heading-secondary.ma-bt-md= `${user.name.split(' ')[0]}'s account settings` 
+            form.form.form-user-data
+              .form__group.form__photo-upload
+                img.form__user-avatar(src=`/images/users/${user.avatar}`, alt='User avatar')
+                p
+                  input.form__upload(type='file', accept='avatar/*', id='avatar', name='avatar')
+                  label(for='avatar') Select a new avatar
+              .form__group
+                label.form__label(for='name') Name
+                input#name.form__input(type='text', value=`${user.name}`, required, name='name')
+              .form__group.ma-bt-md
+                label.form__label(for='email') Email address
+                input#email.form__input(type='email', value=`${user.email}`, required, name='email')
+              .form__group.right
+                button.btn.btn--small.btn--green Save settings
   
 
       

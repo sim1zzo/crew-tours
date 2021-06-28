@@ -1,3 +1,5 @@
+const multer = require('multer');
+const sharp = require('sharp');
 const { User, validate } = require('../models/user');
 
 exports.getAllUsers = async (req, res) => {
@@ -23,7 +25,12 @@ exports.getUser = async (req, res) => {
 
   return res.status(200).json({
     status: 'OK',
-    data: { id: user.id, name: user.name, email: user.email },
+    data: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      avatar: user.avatar,
+    },
   });
 };
 
@@ -31,6 +38,24 @@ exports.deleteUser = async (req, res) => {
   const user = await User.findByIdAndDelete(req.params.id);
   return res.status(200).json({ status: 'Deleted', user });
 };
+
+exports.getAllGuides = async (req, res) => {
+  const guides = await User.find({ role: 'guide' });
+  return res.status(200).json({
+    status: 'OK',
+    data: {
+      guides,
+    },
+  });
+};
+
+const storage = multer.memoryStorage();
+
+const upload = multer({
+  storate: storage,
+});
+
+exports.uploadUserPhoto = upload.single('avatar');
 
 exports.updateUser = async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -52,26 +77,29 @@ exports.updateUser = async (req, res) => {
   if (req.body.email) {
     user.email = req.body.email;
   }
+  if (req.file) {
+    req.file.filename = `avatar-${req.user._id}-${Date.now()}.jpeg`;
+    console.log(req.file);
+    await sharp(req.file.buffer)
+      .resize(500, 500)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`public/images/users/${req.file.filename}`);
+    user.avatar = req.file.filename;
+  }
 
   await user.save();
+  // 2) Filtered out unwanted fields names that are not allowed to be updated
 
   return res.status(200).json({
     status: 'Updated',
     data: {
       user: {
+        _id: user._id,
         name: user.name,
         email: user.email,
+        avatar: user.avatar,
       },
-    },
-  });
-};
-
-exports.getAllGuides = async (req, res) => {
-  const guides = await User.find({ role: 'guide' });
-  return res.status(200).json({
-    status: 'OK',
-    data: {
-      guides,
     },
   });
 };

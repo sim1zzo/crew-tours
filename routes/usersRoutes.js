@@ -5,11 +5,11 @@ const admin = require('../middlewares/admin');
 
 const {
   getAllUsers,
-  // createUser,
   getUser,
   deleteUser,
   updateUser,
   getAllGuides,
+  uploadUserPhoto,
 } = require('../controllers/userController');
 
 const {
@@ -34,7 +34,7 @@ router.patch('/changePassword', auth, asyncCatch(changePassword));
 router.post('/forgottenPassword', asyncCatch(forgottenPassword));
 router.patch('/resetPassword/:token', asyncCatch(resetPassword));
 router.patch('/changeRole', [auth, admin], asyncCatch(changeRole));
-router.patch('/updateMe', auth, asyncCatch(updateUser));
+router.patch('/updateMe', [auth], uploadUserPhoto, asyncCatch(updateUser));
 
 router.route('/').get([auth, admin], asyncCatch(getAllUsers)); //.post(asyncCatch(createUser))
 
