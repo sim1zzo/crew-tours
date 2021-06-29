@@ -33,9 +33,9 @@ exports.userSignUp = async (req, res) => {
   const token = user.generateAuthToken();
   await user.save();
   const coockieOptions = {
-    httpOnly: true,
+    httpOnly: false,
   };
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res
     .cookie('jwt', token, coockieOptions)
@@ -69,9 +69,9 @@ exports.logIn = async (req, res) => {
   //  Information Exper Principle all the information about token are handled by user
   const token = user.generateAuthToken();
   const coockieOptions = {
-    httpOnly: true,
+    httpOnly: false,
   };
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, coockieOptions).status(200).send(token);
 };
