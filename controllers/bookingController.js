@@ -20,7 +20,11 @@ exports.getCheckoutSession = async (req, res) => {
       {
         name: `${tour.name} Tour`,
         description: tour.description,
-        images: [`public/images/tours/${tour.coverPicture}`],
+        images: [
+          `${req.protocol}://${req.get('host')}/images/tours/${
+            tour.coverPicture
+          }`,
+        ],
         amount: tour.price * 100,
         currency: 'usd',
         quantity: 1,
@@ -33,3 +37,5 @@ exports.getCheckoutSession = async (req, res) => {
     session,
   });
 };
+
+exports.webCheckout = async (req, res) => {};
