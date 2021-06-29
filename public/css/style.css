@@ -858,8 +858,8 @@ body {
 }
 .nav__el--cta {
   padding: 1rem 3rem;
-  border-radius: 10rem;
-  border: 1px solid currentColor !important;
+  border-radius: 0rem;
+  border: 0px solid currentColor !important;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -1006,7 +1006,7 @@ body {
   overflow: hidden;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #eaf5ff;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
   -webkit-backface-visibility: hidden;
@@ -1086,9 +1086,9 @@ body {
   fill: #4596d5;
 }
 .card__footer {
-  background-color: #f7f7f7;
+  background-color: #eaf5ff;
   padding: 2.5rem 3rem;
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid #000000;
   font-size: 1.4rem;
   display: grid;
   grid-template-columns: auto 1fr;
