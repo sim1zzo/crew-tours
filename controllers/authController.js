@@ -126,7 +126,7 @@ exports.forgottenPassword = async (req, res) => {
       .status(200)
       .json({ status: 'OK', message: `Email has been sent to ${user.email}` });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     await user.save();
   }
 };

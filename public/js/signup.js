@@ -5,7 +5,7 @@ export const signup = async (name, email, password, password2) => {
     const res = await axios({
       withCredentials: true,
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/users/signup',
+      url: '/api/users/signup',
       data: {
         name,
         email,

@@ -23,14 +23,14 @@ exports.createReview = async (req, res) => {
   // if (error) return res.status(400).send(error.details[0].message);
   if (!req.body.tour) {
     req.body.tour = req.params.id;
-    console.log(req.body.tour);
+    // console.log(req.body.tour);
   }
   if (!req.body.user) {
     const token = req.header('x-auth-token');
     const decoded = jwt.verify(token, process.env.jwtPrivateKey);
     const userId = decoded._id;
     req.body.user = userId;
-    console.log(req.body.user);
+    // console.log(req.body.user);
   }
 
   const review = await Review.create(req.body);

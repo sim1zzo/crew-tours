@@ -79,7 +79,7 @@ exports.updateUser = async (req, res) => {
   }
   if (req.file) {
     req.file.filename = `avatar-${req.user._id}-${Date.now()}.jpeg`;
-    console.log(req.file);
+    // console.log(req.file);
     await sharp(req.file.buffer)
       .resize(500, 500)
       .toFormat('jpeg')

@@ -3,8 +3,8 @@ const error = require('./middlewares/errorMiddleware');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
@@ -35,6 +35,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 
 app.use(function (req, res, next) {
   res.setHeader('Content-Security-Policy', "script-src 'self' api.mapbox.com");
