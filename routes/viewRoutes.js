@@ -2,20 +2,23 @@ const asyncCatch = require('../middlewares/asyncCatch');
 const isLoggedIn = require('../middlewares/isLoggedIn');
 const auth = require('../middlewares/auth');
 const express = require('express');
+const checkout = require('../middlewares/checkout');
 const {
   getOverview,
   getTour,
   getLogin,
   getAccount,
+  getMyTours,
   getSignUp,
 } = require('../controllers/viewsController');
 const router = express.Router();
 
 router.use(isLoggedIn);
-router.get('/', asyncCatch(getOverview));
+router.get('/', checkout, asyncCatch(getOverview));
 router.get('/tour/*', asyncCatch(getTour));
 router.get('/login', asyncCatch(getLogin));
+router.get('/signup', asyncCatch(getSignUp));
 router.get('/me', auth, asyncCatch(getAccount));
-// router.get('/singup', asyncCatch(getSignUp));
+router.get('/my-bookings', auth, asyncCatch(getMyTours));
 
 module.exports = router;

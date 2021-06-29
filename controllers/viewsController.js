@@ -1,3 +1,4 @@
+const { Booking } = require('../models/booking');
 const { Tour } = require('../models/tour');
 
 exports.getOverview = async (req, res) => {
@@ -39,7 +40,7 @@ exports.getLogout = async (req, res) => {
 };
 
 exports.getSignUp = async (req, res) => {
-  res.statu(200).render('signUp', {
+  res.status(200).render('signup', {
     title: 'Signing up',
   });
 };
@@ -47,6 +48,22 @@ exports.getSignUp = async (req, res) => {
 exports.getAccount = async (req, res) => {
   res.status(200).render('myaccount', {
     title: 'Your account',
+  });
+};
+
+exports.getMyTours = async (req, res) => {
+  const bookings = await Booking.find({ user: req.user._id });
+
+  if (!bookings) return res.status(400).send('No booking found');
+
+  const tourId = bookings.map((x) => x.tour);
+  const tours = await Tour.find({
+    _id: { $in: tourId },
+  });
+
+  res.status(200).render('overview', {
+    title: 'My Booked tours',
+    tours,
   });
 };
 

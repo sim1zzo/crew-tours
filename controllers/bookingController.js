@@ -1,4 +1,5 @@
 const { Tour } = require('../models/tour');
+// const { Booking } = require('../models/booking');
 
 exports.getCheckoutSession = async (req, res) => {
   const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -10,15 +11,16 @@ exports.getCheckoutSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     cancel_url: `${req.protocol}://${req.get('host')}/`,
-    success_url: `${req.protocol}://${req.get('host')}/tour/${
-      tour.name.split(' ')[0]
-    }`,
+    success_url: `${req.protocol}://${req.get('host')}/?tour=${
+      req.params.tourId
+    }&user=${req.user._id}&price=${tour.price}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
     line_items: [
       {
         name: `${tour.name} Tour`,
         description: tour.description,
+        images: [`public/images/tours/${tour.coverPicture}`],
         amount: tour.price * 100,
         currency: 'usd',
         quantity: 1,
