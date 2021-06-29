@@ -10,7 +10,7 @@ const toursRouter = require('./routes/toursRoutes');
 const usersRouter = require('./routes/usersRoutes');
 const reviewsRouter = require('./routes/reviewsRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
-const { webCheckout } = require('./controller/bookingController');
+// const { webCheckout } = require('./controller/bookingController');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
@@ -32,11 +32,11 @@ if (process.env.NODE_ENV === 'development') {
   console.log(`Running from ${process.env.NODE_ENV}`);
 }
 
-app.post(
-  '/checkout-webhooks',
-  express.raw({ type: 'application/json' }),
-  webCheckout
-);
+// app.post(
+//   '/checkout-webhooks',
+//   express.raw({ type: 'application/json' }),
+//   webCheckout
+// );
 
 // MIDDLEWARES
 app.use(helmet({ contentSecurityPolicy: false }));
