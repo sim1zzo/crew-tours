@@ -3,6 +3,7 @@ node_modules/
 tests/
 
 *.log
+.cache/
 
 config.env
 .eslintrc.json
