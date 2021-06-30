@@ -230,11 +230,11 @@ body {
   background-color: #fff;
 }
 
-.btn--green {
+.btn--blue {
   background-color: #1a0dab;
   color: #fff;
 }
-.btn--green::after {
+.btn--blue::after {
   background-color: #4596d5;
 }
 
