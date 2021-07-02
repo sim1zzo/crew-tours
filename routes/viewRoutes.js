@@ -10,11 +10,13 @@ const {
   getAccount,
   getMyTours,
   getSignUp,
+  getWelcome,
 } = require('../controllers/viewsController');
 const router = express.Router();
 
 router.use(isLoggedIn);
-router.get('/', checkout, asyncCatch(getOverview));
+router.get('/', checkout, asyncCatch(getWelcome));
+router.get('/tours', checkout, asyncCatch(getOverview));
 router.get('/tour/*', asyncCatch(getTour));
 router.get('/login', asyncCatch(getLogin));
 router.get('/signup', asyncCatch(getSignUp));

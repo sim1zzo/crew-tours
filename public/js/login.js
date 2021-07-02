@@ -15,7 +15,7 @@ export const login = async (email, password) => {
     });
     if (res.statusText === 'OK') {
       window.setTimeout(() => {
-        location.assign('/');
+        location.assign('/tours');
       }, 1500);
     }
 

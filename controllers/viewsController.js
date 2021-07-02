@@ -50,6 +50,11 @@ exports.getAccount = async (req, res) => {
     title: 'Your account',
   });
 };
+exports.getWelcome = async (req, res) => {
+  res.status(200).render('main', {
+    title: 'Welcome',
+  });
+};
 
 exports.getMyTours = async (req, res) => {
   const bookings = await Booking.find({ user: req.user._id });
