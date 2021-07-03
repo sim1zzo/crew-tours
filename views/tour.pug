@@ -61,14 +61,14 @@ block content
 
     
   
+  section.section-map
+    #map(data-locations=`${JSON.stringify(tour.locations)}`)  
 
   section.section-pictures
     each img, i in tour.pictures
       .picture-box
         img.picture-box__img(src=`/images/tours/${img}`, alt=`Tour ${i + 1}`, class=`picture-box__img--${i + 1}`)
 
-  section.section-map
-    #map(data-locations=`${JSON.stringify(tour.locations)}`)  
 
   section.section-cta
     .cta
