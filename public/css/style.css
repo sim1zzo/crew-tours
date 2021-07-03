@@ -516,7 +516,7 @@ body {
     100% calc(100% - var(--section-rotate)),
     0 100%
   );
-  margin-top: calc(0px - var(--section-rotate));
+  margin-top: 30px;
   position: relative;
   z-index: 1000;
 }
