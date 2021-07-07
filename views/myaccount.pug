@@ -12,8 +12,15 @@ block content
   main.main
     .user-view
         nav.user-view__menu
-        ul.side-nav
-          +navItem('/my-bookings', 'My bookings', 'briefcase')
+        - if (user.role === 'admin')
+            ul.side-nav
+              +navItem('/my-bookings', 'My bookings', 'briefcase')
+              +navItem('/allusers', 'Manage users', 'users')
+        - else 
+            ul.side-nav
+              +navItem('/my-bookings', 'My bookings', 'briefcase')
+
+        
 
         .user-view__content
           .user-view__form-container

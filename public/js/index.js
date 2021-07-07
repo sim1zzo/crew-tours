@@ -3,7 +3,7 @@ import '@babel/polyfill';
 import { displayMap } from './mapbox';
 import { login, logout } from './login';
 import { signup } from './signup';
-import { update } from './updateUser';
+import { update, deleteUser } from './updateUser';
 import { bookTour } from './payment';
 
 const mapBox = document.getElementById('map');
@@ -12,6 +12,10 @@ const signupForm = document.querySelector('.form--signup');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const bookBtn = document.getElementById('book-tour');
+const deleteBtn = document.getElementById('user-data');
+
+console.log(deleteBtn);
+console.log(bookBtn);
 
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -41,9 +45,17 @@ if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (bookBtn)
   bookBtn.addEventListener('click', (e) => {
-    e.target.textContent = 'In process...';
+    e.target.textContent = 'Processing...';
     const { tourId } = e.target.dataset;
     bookTour(tourId);
+  });
+
+if (deleteBtn)
+  deleteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const { userId } = e.target.dataset;
+    console.log(e.target.dataset);
+    deleteUser(userId);
   });
 
 if (userDataForm)

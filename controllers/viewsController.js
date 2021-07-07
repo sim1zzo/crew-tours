@@ -1,5 +1,6 @@
 const { Booking } = require('../models/booking');
 const { Tour } = require('../models/tour');
+const { User } = require('../models/user');
 
 exports.getOverview = async (req, res) => {
   const tours = await Tour.find();
@@ -53,6 +54,14 @@ exports.getAccount = async (req, res) => {
 exports.getWelcome = async (req, res) => {
   res.status(200).render('main', {
     title: 'Welcome',
+  });
+};
+exports.getAllUsers = async (req, res) => {
+  const users = await User.find();
+  if (!users) return res.status(400).send('No user found!');
+  res.status(200).render('allusers', {
+    title: 'All Users',
+    users,
   });
 };
 

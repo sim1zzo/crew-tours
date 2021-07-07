@@ -31,7 +31,7 @@ export const logout = async () => {
       method: 'GET',
       url: '/api/users/logout',
     });
-    if (res.statusText === 'OK') location.reload();
+    if (res.statusText === 'OK') location.assign('/tours');
   } catch (err) {
     alert('Something went wrong ' + err.message);
   }
