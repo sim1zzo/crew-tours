@@ -17,23 +17,6 @@ export const update = async (data) => {
   }
 };
 
-export const deleteUser = async (userId) => {
-  try {
-    const res = await axios({
-      method: 'DELETE',
-      url: `/api/users/${userId}`,
-    });
-    console.log(res);
-    if (res.data.status === 'Ok') {
-      window.setTimeout(() => {
-        location.assign('/allusers');
-      }, 1500);
-    }
-  } catch (error) {
-    alert('An error occurred', error);
-  }
-};
-
 // const userDataForm = document.querySelector('.form-user-data');
 
 // if (userDataForm)
