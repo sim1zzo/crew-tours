@@ -582,10 +582,10 @@ body {
 }
 
 .section-usdel {
-  margin-top: calc(0px - var(--section-rotate));
-  padding: 20rem;
-  padding-bottom: 5rem;
-  padding-top: calc(4rem + var(--section-rotate));
+  margin-top: 1rem;
+  padding: 18rem;
+  padding-bottom: 0rem;
+  padding-top: 1rem;
   background-color: #ffffff;
 }
 .usdel {
@@ -594,7 +594,7 @@ body {
   margin: 0 auto;
   overflow: hidden;
   background-color: #ffffff;
-  padding: 0rem 4rem 0rem 13rem;
+  padding: 0rem 2rem 0rem 15rem;
   border-radius: 0rem;
   -webkit-box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
