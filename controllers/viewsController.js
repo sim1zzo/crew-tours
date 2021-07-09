@@ -65,6 +65,14 @@ exports.getAllUsers = async (req, res) => {
   });
 };
 
+exports.getToursDeletion = async (req, res) => {
+  const tours = await Tour.find();
+
+  res.status(200).render('deletetour', {
+    title: 'Availble tours',
+    tours,
+  });
+};
 exports.getMyTours = async (req, res) => {
   const bookings = await Booking.find({ user: req.user._id });
 

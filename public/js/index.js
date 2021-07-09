@@ -6,6 +6,7 @@ import { signup } from './signup';
 import { update } from './updateUser';
 import { bookTour } from './payment';
 import { deleteUser } from './deleteUser';
+import { deleteTour } from './deleteTour';
 
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
@@ -14,6 +15,7 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const bookBtn = document.getElementById('book-tour');
 const deleteBtn = document.getElementById('usdel');
+const delTourBtn = document.getElementById('delete-tour');
 
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -50,7 +52,8 @@ if (bookBtn)
 
 if (deleteBtn)
   deleteBtn.addEventListener('click', (e) => {
-    console.log(e);
+    const { userId } = e.target.dataset;
+    deleteUser(userId);
   });
 
 if (userDataForm)
@@ -62,3 +65,11 @@ if (userDataForm)
     form.append('avatar', document.getElementById('avatar').files[0]);
     update(form);
   });
+
+if (delTourBtn) {
+  // console.log(delTourBtn);
+  delTourBtn.addEventListener('click', (e) => {
+    const { tourId } = e.target.dataset;
+    deleteTour(tourId);
+  });
+}

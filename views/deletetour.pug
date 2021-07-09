@@ -1,0 +1,45 @@
+extends home
+
+block content
+  main.main
+    .card-container
+
+      each tour in tours
+        .card 
+          .card__header 
+            .card_picture 
+              .card__picture-overlay &nbsp;
+              img.card__picture-img(src=`images/tours/${tour.coverPicture}`, alt=`${tour.name}`)
+            h3.heading-tertirary
+              span= tour.name
+
+          .card__details
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-map-pin')
+                span=   `${tour.departureLocation.summary}`
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-calendar')
+                span= tour.tourDates[0].toLocaleString('en-us', {month: 'long', year: 'numeric'})
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-flag')
+                span= `${tour.locations.length} stops`
+            .card_data 
+              svg.card__icon
+                use(xlink:href='/images/icons.svg#icon-user')
+                span=  `${tour.maxNumberOfParticipant} people`
+            h4.card__sub-heading= `${tour.duration}-day tour`
+            p.card__text= `${tour.description}`
+          
+          .card__footer 
+            p
+              span.card__footer-value= `$${tour.price}`
+              |
+              span.card__footer-text  price per person
+            p
+              button.btn.btn--blue.btn--small#delete-tour(data-tour-id=`${tour.id}`) delete
+
+            
+

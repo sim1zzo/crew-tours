@@ -13,6 +13,7 @@ const {
   getSignUp,
   getWelcome,
   getAllUsers,
+  getToursDeletion,
 } = require('../controllers/viewsController');
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router.get('/login', asyncCatch(getLogin));
 router.get('/signup', asyncCatch(getSignUp));
 router.get('/me', auth, asyncCatch(getAccount));
 router.get('/my-bookings', auth, asyncCatch(getMyTours));
+router.get('/delete-tour', [auth, admin], asyncCatch(getToursDeletion));
 router.get('/allusers', [auth, admin], asyncCatch(getAllUsers));
 
 module.exports = router;

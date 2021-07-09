@@ -3,6 +3,7 @@ import axios from 'axios';
 export const deleteUser = async (userId) => {
   try {
     const res = await axios({
+      withCredentials: true,
       method: 'DELETE',
       url: `/api/users/${userId}`,
     });
