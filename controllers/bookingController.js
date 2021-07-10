@@ -32,6 +32,9 @@ exports.getCheckoutSession = async (req, res) => {
     ],
   });
 
+  tour.maxNumberOfParticipant -= 1;
+  await tour.save();
+
   res.status(200).json({
     status: 'success',
     session,
