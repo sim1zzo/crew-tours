@@ -4,6 +4,7 @@ tests/
 
 *.log
 .cache/
+.DS_Store
 
 config.env
 .eslintrc.json
